@@ -7,7 +7,7 @@ build:
     - apk add zip
   script:
    - ls
-   - zip source.zip src/ -R
+   - zip source.zip src/ -r
   artifacts:
     paths:
       - source.zip
