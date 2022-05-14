@@ -7,7 +7,6 @@ build:
   before_script:
     - apk add tar
   script:
-   - ls
    - mv src komposant
    - tar cvf source.tar komposant
   artifacts:
