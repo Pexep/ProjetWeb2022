@@ -1,13 +1,28 @@
 stages:
   - build
+  - deploy
 build:
   stage: build
   image: alpine
   before_script:
-    - apk add zip
+    - apk add tar
   script:
    - ls
-   - zip source.zip src/ -r
+   - mv src komposant
+   - tar cvf source.tar komposant
   artifacts:
     paths:
-      - source.zip
+      - source.tar
+
+deploy:
+  stage: deploy
+  image: alpine
+  before_script:
+    - apk add openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
+  - scp -o StrictHostKeyChecking=no source.tar foucher@gatekeeper.iut-fbleau.fr:/export/home/an21/foucher/public_html/
+  - ssh -o StrictHostKeyChecking=no foucher@gatekeeper.iut-fbleau.fr "cd public_html/;rm -rf komposant; tar xfv source.tar"
