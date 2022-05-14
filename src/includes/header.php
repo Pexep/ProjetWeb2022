@@ -1,10 +1,10 @@
 <?php
 
 if(!isset($title)){
-    $title = "Komposant"
+    $title = "Komposant";
 }
 if(!isset($description)){
-    $description = "Recyclez vos anciens appareils éléctroniques pour sauver la planète et gagnez des bons d'achats !"
+    $description = "Recyclez vos anciens appareils éléctroniques pour sauver la planète et gagnez des bons d'achats !";
 }
 
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){
