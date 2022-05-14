@@ -1,14 +1,13 @@
 stages:
   - build
-
 build:
   stage: build
   image: alpine
   before_script:
     - apk add zip
   script:
+   - ls
    - zip source.zip src/ -R
-
-   artifacts:
+  artifacts:
     paths:
       - source.zip
