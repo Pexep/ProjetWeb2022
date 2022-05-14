@@ -7,12 +7,12 @@ if(!isset($description)){
     $description = "Recyclez vos anciens appareils éléctroniques pour sauver la planète et gagnez des bons d'achats !"
 }
 
-if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){
     $url = "https://";
-else  
+} else {
     $url = "http://";
+}
 $url.= $_SERVER['HTTP_HOST'];
-
 $url.= $_SERVER['REQUEST_URI'];
 
 ?>
