@@ -28,4 +28,3 @@ $url.= $_SERVER['REQUEST_URI'];
     <meta property="og:url" content="<?php echo $url?>">
     <meta property="og:site_name" content="Komposant">
 </head>
-
