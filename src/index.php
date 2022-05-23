@@ -2,6 +2,7 @@
 /* Personnalisation des infos de la page */
 $title="Accueil";
 $description="Page d'accueil du site komposant.com";
+$database_needed = false;
 ?>
 
 <html>
