@@ -21,6 +21,7 @@
 [Sujet](https://dwarves.iut-fbleau.fr/gitiut/madelaine/SAE-BUT1-WEB-Publique)
 
 ## Organisation
+_les liens ne sont pas encore fonctionnels_
 
 [Trello](https://trello.com)
 

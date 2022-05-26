@@ -1,5 +1,7 @@
 <?php
-
+/*
+    Fichier pour personnaliser les titres des pages.
+*/
 if(!isset($title)){
     $title = "Komposant";
 }

@@ -3,6 +3,7 @@
 # Plan
 
 - Introduction
+- Organisation
 - Wireflow
 - Conclusions personnelles
 - Conclusion globlale
