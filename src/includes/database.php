@@ -1,5 +1,12 @@
 <?php
-// Pour éviter de faire des connexions inutiles à la base de données, on l'appelle que si nécessaire.
-if(isset($db_required) && $db_required == true){
-    // Initialisation de la connexion à la base de données
+include("config.php");
+
+if(isset($database_needed) and $database_needed == true) {
+    // Connect to the database
+    $db = mysqli_connect($db_host, $db_user, $db_passwd, $db_name);
+    if(!$db) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+}
+
 ?>
