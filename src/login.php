@@ -12,6 +12,7 @@ $description = "Page de connexion du site komposant.com";
     <?php include("includes/navbar.php"); ?>
 
     <form action="includes/login.php" method="post" class="w3-container w3-card">
+        <h2>Se connecter</h2>
         <label>Adresse mail</label>
         <input type="mail" name="username" placeholder="Adresse mail" class="w3-input">
         <label>Mot de passe</label>
