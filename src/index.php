@@ -6,6 +6,8 @@ $database_needed = false;
 ?>
 
 <html>
-    <!--- Balise head pour changer le titre de la page et la description --> 
+    <!--- Balise head pour changer le titre de la page et la description -->
+    <?php include("includes/navbar.php"); ?>
+    <div>Accueil du site</div>
     <?php include("includes/header.php") ?>
 </html>
