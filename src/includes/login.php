@@ -18,9 +18,11 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
         }
     }
 
-
     if($connexion_valide){
+        /* On ajoute les détails de connexion dans la session de l'utilisateur */
         $_SESSION['logged_in'] = true;
+        $_SESSION['username'] = $result['login'];
+        $_SESSION['password'] = $password;
         echo "\n Connecté";
     }
 }
