@@ -5,6 +5,7 @@
 - Introduction
 - Organisation
 - Wireflow
+- Cas d'utilisations
 - Conclusions personnelles
 - Conclusion globlale
 
@@ -12,6 +13,8 @@
 ...
 
 # Organisation
+
+##  Repartitions des tâches
 
 ## Fonctionnement du repo git
 
@@ -31,6 +34,14 @@ On pourrait mettre en place des tests qui seront exécutés dans le premier pipe
 
 # Wireflow
 
+# Cas d'utilisations
+
 # Conclusions personnelles
+
+## Mathis
+
+## Théo
+
+## Yvan
 
 # Conclusion globale
