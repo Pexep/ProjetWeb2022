@@ -13,5 +13,5 @@
         <a href="#" class="w3-bar-item w3-button">Link 3</a>
         </div>
     </div>
-    <a href="" class="w3-bar-item w3-button w3-right">Mon compte</a>
+    <a href="login.php" class="w3-bar-item w3-button w3-right">Se connecter</a>
 </div> 
