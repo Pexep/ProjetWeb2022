@@ -16,6 +16,12 @@
 
 ##  Repartitions des tâches
 
+### Trello
+
+Pour se répartir les tâches nous avons décidé d'utiliser [Trello](https://trello.com/b/i1b6ghEQ/site).
+
+Ce magnifique outil nous permet de planifier les tâches et de les assigner à un membre du groupe. On peut voir l'avancée globale du projet mais aussi de chacune des parties du projet.
+
 ## Fonctionnement du repo git
 
 ### Choix de la plateforme
