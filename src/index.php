@@ -1,5 +1,6 @@
 <?php
 /* Personnalisation des infos de la page */
+session_start();
 $title="Accueil";
 $description="Page d'accueil du site komposant.com";
 ?>

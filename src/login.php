@@ -1,7 +1,11 @@
 <?php
-
+include("includes/before_headers.php");
 $title = "Connexion - Komposant";
 $description = "Page de connexion du site komposant.com";
+
+if(isset($_SESSION["connected"]) && $_SESSION["connected"] == true){
+    header("Location: account.php");
+}
 
 ?>
 

@@ -9,5 +9,11 @@ $description = "Accédez à votre compte komposant.com";
     <?php include("includes/header.php"); ?>
     <body>
         <?php include("includes/navbar.php"); ?>
+        <div>
+            Page profil de <?php echo $_SESSION["username"]; ?>
+        </div>
+        <div>
+            Se déconnecter: <a href="includes/logout.php">se déconnecter</a>
+        </div>
     </body>
 </html>
