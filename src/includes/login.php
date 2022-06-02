@@ -24,6 +24,8 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
         $_SESSION['username'] = $result['login'];
         $_SESSION['password'] = $password;
         echo "\n Connecté";
+    } else {
+        echo "\n Mauvais mot de passe / adresse mail";
     }
 }
 
