@@ -21,7 +21,7 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
     if($connexion_valide){
         /* On ajoute les détails de connexion dans la session de l'utilisateur */
         $_SESSION['connected'] = true;
-        $_SESSION['username'] = $result['mail'];
+        $_SESSION['username'] = $result['email'];
         $_SESSION['password'] = $password;
         echo "\n Connecté";
     } else {
