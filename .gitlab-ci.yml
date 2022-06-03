@@ -24,7 +24,7 @@ build-branches:
   before_script:
     - apk add tar
   script:
-   - mv src komposant
+   - mv src k_$CI_BRANCH_NAME
    - tar cvf source.tar k_$CI_BRANCH_NAME
   artifacts:
     paths:
