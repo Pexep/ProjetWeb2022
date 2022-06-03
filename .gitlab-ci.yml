@@ -1,10 +1,12 @@
 stages:
   - build
-  - deploy_personnal
   - deploy
-build:
+
+build-main:
   stage: build
   image: alpine
+  rules:
+    - if: $CI_BRANCH_NAME == "master"
   before_script:
     - apk add tar
   script:
@@ -13,6 +15,21 @@ build:
   artifacts:
     paths:
       - source.tar
+
+build-branches:
+  stage: build
+  image: alpine
+  rules:
+    - if: $CI_BRANCH_NAME != "master"
+  before_script:
+    - apk add tar
+  script:
+   - mv src komposant
+   - tar cvf source.tar k_$CI_BRANCH_NAME
+  artifacts:
+    paths:
+      - source.tar
+
 
 deploy_to_branches:
   stage: deploy
