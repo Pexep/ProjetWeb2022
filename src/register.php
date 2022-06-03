@@ -24,7 +24,8 @@ $description = "Page pour créer un compte sur le site komposant.com";
             <label>Confirmer votre mot de passe</label>
             <input type="password" name="passwordverif" placeholder="Entrer à nouveau votre mot de passe" class="w3-input" required>
             <br>
-            <input type="submit" value="Login" class="w3-button w3-green">
+            <input type="submit" value="Inscription" class="w3-button w3-green">
+            <br>
         </form>
 
 </html>
