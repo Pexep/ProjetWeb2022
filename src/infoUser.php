@@ -8,7 +8,7 @@
   $login=$_SESSION['login'];
   $req = $db->prepare("SELECT id from Customer where login=:login;");
   $req->execute(array(
-    "login" ->  $_SESSION['login']
+    "login" => "golgot77"
   ));
 
   $result = $req->fetch();
@@ -23,33 +23,91 @@
     <?php include("includes/header.php") ?>
   <body>
     <div id="infoLogin">
-      Votre nom d'utilisateur :
       <?php
-        echo $login;
-        echo "\n";
+        echo "Votre nom d'utilisateur : $login\n"
       ?>
       <br>
     </div>
     <div id="infoCagnotte">
-      Votre cagnotte s'élève à
       <?php
-        echo mysqli_fetch_assoc(mysqli_query($bd,"Select stash from Customer where id=\'$id\';"));
-        echo "\n";
+        $req = $db->prepare("SELECT stash from Customer where id=:id;");
+        $req->execute(array(
+          "id" => $userid
+        ));
+        $result = $req->fetch();
+        echo "Votre cagnotte s'élève à $result €<br>\n";
       ?>
-      €<br>
     </div>
     <div id="infoMetal">
       Vous avez permis de récupérer :<br>
       <ul>
       <?php
-        $res=mysqli_query($bd,"Select element, sum(element) as sum from usersExtraction where id=\'$id\' group by element;");
-        while ($element=mysqli_fetch_assoc($res)){
-          $qtte=$element['sum'];
-          $idElement=$element['element'];
+        $req = $db->prepare("SELECT element, sum(element) AS sum from Customer where id=:id group by element;");
+        $req->execute(array(
+          "id" => $userid
+        ));
+
+        while ($result = $req->fetch();){
+          $qtte=$result['sum'];
+          $idElement=$result['element'];
           echo "<li>$qtte mg de ";
-          echo mysqli_fetch_assoc(mysqli_query($bd,"Select name from Mendeleiev where Z=\'$idElement\';"));
+          $reqbis = $db->prepare("SELECT name from Mendeleiev where Z=:Z;");
+          $reqbis->execute(array(
+            "Z" => $idElement
+          ));
+          echo $reqbis->fetch();
           echo "</li>\n";
         }
+      ?>
+      </ul>
+      <br>
+    </div>
+    <div id="infoCommandes">
+      Vos commandes :<br>
+      <ul>
+      <?php
+      // Les commandes de l'utilisateur (à finir quand les informations seront dans la bd)
+        // $req = $db->prepare("SELECT element, sum(element) AS sum from Customer where id=:id group by element;");
+        // $req->execute(array(
+        //   "id" => $userid
+        // ));
+        //
+        // while ($result = $req->fetch();){
+        //   $qtte=$result['sum'];
+        //   $idElement=$result['element'];
+        //   echo "<li>$qtte mg de ";
+        //   $reqbis = $db->prepare("SELECT name from Mendeleiev where Z=:Z;");
+        //   $reqbis->execute(array(
+        //     "Z" => $idElement
+        //   ));
+        //   echo $reqbis->fetch();
+        //   echo "</li>\n";
+        // }
+      ?>
+      </ul>
+      <br>
+    </div>
+    <div id="infoVentes">
+      Vous avez vendu :<br>
+      <ul>
+      <?php
+      // Les ventes de l'utilisateur (à finir quand les informations seront dans la bd)
+        // $req = $db->prepare("SELECT element, sum(element) AS sum from Customer where id=:id group by element;");
+        // $req->execute(array(
+        //   "id" => $userid
+        // ));
+        //
+        // while ($result = $req->fetch();){
+        //   $qtte=$result['sum'];
+        //   $idElement=$result['element'];
+        //   echo "<li>$qtte mg de ";
+        //   $reqbis = $db->prepare("SELECT name from Mendeleiev where Z=:Z;");
+        //   $reqbis->execute(array(
+        //     "Z" => $idElement
+        //   ));
+        //   echo $reqbis->fetch();
+        //   echo "</li>\n";
+        // }
       ?>
       </ul>
       <br>
