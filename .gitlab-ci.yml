@@ -6,7 +6,7 @@ build-main:
   stage: build
   image: alpine
   rules:
-    - if: $CI_BRANCH_NAME == "master"
+    - if: $CI_COMMIT_BRANCH == "master"
   before_script:
     - apk add tar
   script:
@@ -20,12 +20,12 @@ build-branches:
   stage: build
   image: alpine
   rules:
-    - if: $CI_BRANCH_NAME != "master"
+    - if: $CI_COMMIT_BRANCH != "master"
   before_script:
     - apk add tar
   script:
-   - mv src k_$CI_BRANCH_NAME
-   - tar cvf source.tar k_$CI_BRANCH_NAME
+   - mv src k_$CI_COMMIT_BRANCH
+   - tar cvf source.tar k_$CI_COMMIT_BRANCH
   artifacts:
     paths:
       - source.tar
@@ -35,7 +35,7 @@ deploy_to_branches:
   stage: deploy
   image: alpine
   rules:
-    - if: $CI_BRANCH_NAME != "master"
+    - if: $CI_COMMIT_BRANCH != "master"
   environment:
     name: $CI_COMMIT_BRANCH
     url: https://dwarves.iut-fbleau.fr/~foucher/k_$CI_COMMIT_BRANCH/
@@ -56,7 +56,7 @@ deploy:
     name: prod
     url: https://dwarves.iut-fbleau.fr/~foucher/komposant/
   rules:
-    - if: $CI_BRANCH_NAME == "master"
+    - if: $CI_COMMIT_BRANCH == "master"
   before_script:
     - apk add openssh-client
     - eval $(ssh-agent -s)
