@@ -29,6 +29,7 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
             setcookie('mdpavoler', $password, time()+60*60*24*30);
             print_r($_COOKIE);
         }
+        echo "Vous êtes connecté";
     } else {
         echo "\n Mauvais mot de passe / adresse mail";
     }
