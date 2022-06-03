@@ -1,7 +1,23 @@
 <?php
 
-$title = "Page produit";
-$description = "Page produit du site komposant.com";
+$found = false;
+
+
+/* */
+if(!$found){
+    /* 
+    On précise que le produit n'a pas été trouvé.
+    */
+    $title = "Produit non trouvé - Komposant";
+    $description = "Ce produit n'existe pas.";
+}
+else {
+    /* 
+    On peut mettre les informations du produit dans la description et le titre de la page si on les trouve bien.
+    */
+    $title = "Nom produit - composant";
+    $description = "Description du produit";
+}
 
 ?>
 <html>
