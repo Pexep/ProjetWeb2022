@@ -1,5 +1,5 @@
 <?php
-  includ("includes/database.php")
+  include("includes/database.php");
   /* Personnalisation des infos de la page */
   session_start();
   $title="Vos informations";
