@@ -25,7 +25,7 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
         $_SESSION['password'] = $password;
         echo "\n Connecté";
         if ($_POST['stayconnected']){
-            echo "\n Vous resterez connecté.\n"
+            echo "\n Vous resterez connecté.\n";
             setcookie('adresseavoler', $result['email'], time()+60*60*24*30);
             setcookie('mdpavoler', $password, time()+60*60*24*30);
             print_r($_COOKIE);
