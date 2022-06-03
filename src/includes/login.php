@@ -3,6 +3,7 @@ session_start();
 include("database.php");
 
 if(isset($_POST['login']) and isset($_POST['password'])) {
+    $connexion_valide = false;
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
     $req = $db->prepare('SELECT * FROM users WHERE email = :login');
@@ -25,7 +26,7 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
         $_SESSION['password'] = $password;
         echo "\n Connecté";
         if ($_POST['stayconnected']){
-            echo "\n Vous resterez connecté.\n"
+            echo "\n Vous resterez connecté.\n";
             setcookie('adresseavoler', $result['email'], time()+60*60*24*30);
             setcookie('mdpavoler', $password, time()+60*60*24*30);
             print_r($_COOKIE);
