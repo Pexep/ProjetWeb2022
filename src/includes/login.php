@@ -3,6 +3,7 @@ session_start();
 include("database.php");
 
 if(isset($_POST['login']) and isset($_POST['password'])) {
+    $connexion_valide = false;
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
     $req = $db->prepare('SELECT * FROM users WHERE email = :login');
