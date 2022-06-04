@@ -38,6 +38,11 @@ Dans notre cas, nous avons une pipeline qui vient compresser le dossier `src/` q
 
 On pourrait mettre en place des tests qui seront exécutés dans le premier pipeline pour vérifier que les fichiers .php ont une syntaxe valide.
 
+#### Branches autres que master
+
+Lorsque l'on push sur une branche différente de master, le script vient changer le nom du dossier dans lequel sera mis le site comme ceci: `k_$COMMIT_BRANCH_NAME` -> `k_yvan`.
+Cela permet de tester en cas de grand changements et que l'on puisse approuver le travail de chaque personne du groupe.
+
 # Wireflow
 
 # Cas d'utilisations
