@@ -19,7 +19,6 @@ else {
     $title = "Nom produit - composant";
     $description = "Description du produit";
 }
-
 ?>
 <html>
     <?php include("includes/header.php"); ?>
