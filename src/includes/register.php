@@ -20,6 +20,8 @@ if(isset($_POST['login']) and isset($_POST['password']) and isset($_POST['email'
 
     }
 
+} else{
+    header("Location: ../register.php");
 }
 
 

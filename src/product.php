@@ -1,4 +1,5 @@
 <?php
+include("includes/before_headers.php");
 
 $found = false;
 
