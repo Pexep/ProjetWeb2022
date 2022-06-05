@@ -6,9 +6,7 @@ build-main:
   stage: build
   image: alpine
   rules:
-    - if: $CI_COMMIT_BRANCH == "master"
-  only:
-    - if: $CI_PIPELINE_SOURCE != "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE != "merge_request_event"
   before_script:
     - apk add tar
   script:
@@ -22,9 +20,7 @@ build-branches:
   stage: build
   image: alpine
   rules:
-    - if: $CI_COMMIT_BRANCH != "master"
-  only:
-    - if: $CI_PIPELINE_SOURCE != "merge_request_event"
+    - if: $CI_COMMIT_BRANCH != "master" && $CI_PIPELINE_SOURCE != "merge_request_event"
   before_script:
     - apk add tar
   script:
@@ -39,9 +35,7 @@ deploy_to_branches:
   stage: deploy
   image: alpine
   rules:
-    - if: $CI_COMMIT_BRANCH != "master"
-  only:
-    - if: $CI_PIPELINE_SOURCE != "merge_request_event"
+    - if: $CI_COMMIT_BRANCH != "master" && $CI_PIPELINE_SOURCE != "merge_request_event"
   environment:
     name: $CI_COMMIT_BRANCH
     url: https://dwarves.iut-fbleau.fr/~foucher/k_$CI_COMMIT_BRANCH/
@@ -62,9 +56,7 @@ deploy:
     name: prod
     url: https://dwarves.iut-fbleau.fr/~foucher/komposant/
   rules:
-    - if: $CI_COMMIT_BRANCH == "master"
-  only:
-    - if: $CI_PIPELINE_SOURCE != "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE != "merge_request_event"
   before_script:
     - apk add openssh-client
     - eval $(ssh-agent -s)
