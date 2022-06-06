@@ -1,7 +1,7 @@
 <?php
 $title = "Mon compte - Komposant";
 $description = "Accédez à votre compte komposant.com";
-
+include_once("includes/before_headers.php");
 ?>
 
 <!DOCTYPE html>
