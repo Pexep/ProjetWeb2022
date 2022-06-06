@@ -1,5 +1,10 @@
 <?php
 // Utilisé pour afficher la barre de navigation
+
+// Récupérer le path de l'utilisateur pour le mettre dans le lien de la barre de navigation
+$path = $_SERVER['PHP_SELF'];
+$path = urlencode($path);
+
 ?>
 
 <div class="w3-bar w3-light-grey">
@@ -18,7 +23,7 @@
         echo '<a href="account.php" class="w3-bar-item w3-button w3-right">Mon compte</a>';
     }
     else{
-        echo '<a href="login.php" class="w3-bar-item w3-button w3-right">Se connecter</a>';
+        echo '<a href="login.php?redirect_to='.$path.'" class="w3-bar-item w3-button w3-right">Se connecter</a>';
     }
     ?>
 </div> 
