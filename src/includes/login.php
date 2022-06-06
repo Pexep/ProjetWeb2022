@@ -29,6 +29,17 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
             setcookie('mdpavoler', $password, time()+60*60*24*30);
             print_r($_COOKIE);
         }
+
+        /** Redirection à la page où le client était */
+        if(isset($_SESSION['redirect_to'])){
+            $redirect_to = $_SESSION['redirect_to'];
+            unset($_SESSION['redirect_to']);
+            header('Location: '.$redirect_to);
+        }
+        else{
+            header('Location: index.php');
+        }
+
         echo "Vous êtes connecté";
     } else {
         echo "\n Mauvais mot de passe / adresse mail";
