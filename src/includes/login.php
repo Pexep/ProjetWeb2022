@@ -40,10 +40,12 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
             header('Location: index.php');
         }
 
-        echo "Vous êtes connecté";
     } else {
         echo "\n Mauvais mot de passe / adresse mail";
     }
+} else {
+    /* Aucun champs n'a été rempli on demande à l'utilisateur de recommencer en le redirigeant sur la page de login*/
+    header('Location: ../login.php');
 }
 
 ?>
