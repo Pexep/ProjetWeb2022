@@ -23,7 +23,10 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
         /* On ajoute les détails de connexion dans la session de l'utilisateur */
         $_SESSION['connected'] = true;
         $_SESSION['username'] = $result['email'];
+        $_SESSION['email'] = $result['email'];
         $_SESSION['password'] = $password;
+
+        /* Ajout des cookies pour rester connecté (pour l'instant on ne les utilise pas) */
         if (isset($_POST['stayconnected']) && $_POST['stayconnected'] == "on") {
             setcookie('adresseavoler', $result['email'], time()+60*60*24*30);
             setcookie('mdpavoler', $password, time()+60*60*24*30);
