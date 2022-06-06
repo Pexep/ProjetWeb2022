@@ -13,5 +13,12 @@
         <a href="#" class="w3-bar-item w3-button">Link 3</a>
         </div>
     </div>
-    <a href="login.php" class="w3-bar-item w3-button w3-right">Se connecter</a>
+    <?php
+    if($_SESSION["connected"] == true){
+        echo '<a href="account.php" class="w3-bar-item w3-button w3-right">Mon compte</a>';
+    }
+    else{
+        echo '<a href="login.php" class="w3-bar-item w3-button w3-right">Se connecter</a>';
+    }
+    ?>
 </div> 
