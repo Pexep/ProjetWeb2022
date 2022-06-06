@@ -4,7 +4,7 @@
 // Récupérer le path de l'utilisateur pour le mettre dans le lien de la barre de navigation
 $path = $_SERVER['PHP_SELF'];
 $path = urlencode($path);
-
+$connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
 ?>
 
 <div class="w3-bar w3-light-grey">
@@ -19,7 +19,7 @@ $path = urlencode($path);
         </div>
     </div>
     <?php
-    if($_SESSION["connected"] == true){
+    if($connected){
         echo '<a href="account.php" class="w3-bar-item w3-button w3-right">Mon compte</a>';
     }
     else{
