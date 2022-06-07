@@ -6,9 +6,10 @@
   $description="Page des informations des utilisateurs sur site komposant.com";
 
   //$login=$_SESSION['login'];
+  $login='golgot77@gmail.com';
   $req = $db->prepare("SELECT id from users where email=:login;");
   $req->execute(array(
-    "login" => "golgot77@gmail.com"
+    "login" => $login
   ));
 
   $result = $req->fetch();
@@ -24,7 +25,12 @@
   <body>
     <div id="infoLogin">
       <?php
-        echo "Votre nom d'utilisateur : $login\n"
+        $req = $db->prepare("SELECT nom from usersAdresses where id=:id;");
+        $req->execute(array(
+          "id" => $userid
+        ));
+        $nom=$req->fetch();
+        echo "Votre nom : $nom<br>\n"
       ?>
       <br>
     </div>
