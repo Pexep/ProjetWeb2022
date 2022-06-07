@@ -72,23 +72,23 @@
       Vos commandes :<br>
       <ul>
       <?php
-      // Les commandes de l'utilisateur (à finir quand les informations seront dans la bd)
-        // $req = $db->prepare("SELECT element, sum(element) AS sum from Customer where id=:id group by element;");
-        // $req->execute(array(
-        //   "id" => $userid
-        // ));
-        //
-        // while ($result = $req->fetch();){
-        //   $qtte=$result['sum'];
-        //   $idElement=$result['element'];
-        //   echo "<li>$qtte mg de ";
-        //   $reqbis = $db->prepare("SELECT name from Mendeleiev where Z=:Z;");
-        //   $reqbis->execute(array(
-        //     "Z" => $idElement
-        //   ));
-        //   echo $reqbis->fetch();
-        //   echo "</li>\n";
-        // }
+        // Les commandes de l'utilisateur
+        $req = $db->prepare("SELECT  'date',status,product FROM usersOrders where user=:id;");
+        $req->execute(array(
+          "id" => $userid
+        ));
+
+        while ($result = $req->fetch()){
+          $nom=$db->prepare("SELECT  name FROM products where id=:id;");
+            $reqbis->execute(array(
+              "id" => $result['product']
+            ));
+          $nom=$reqbis->fetch();
+          $nom=$nom['name'];
+          $status=$result['status'];
+          $date=$result['date'];
+          echo "<li>Votre $nom, commandé le : $date, est $status</li>\n";
+        }
       ?>
       </ul>
       <br>
@@ -97,23 +97,23 @@
       Vous avez vendu :<br>
       <ul>
       <?php
-      // Les ventes de l'utilisateur (à finir quand les informations seront dans la bd)
-        // $req = $db->prepare("SELECT element, sum(element) AS sum from Customer where id=:id group by element;");
-        // $req->execute(array(
-        //   "id" => $userid
-        // ));
-        //
-        // while ($result = $req->fetch();){
-        //   $qtte=$result['sum'];
-        //   $idElement=$result['element'];
-        //   echo "<li>$qtte mg de ";
-        //   $reqbis = $db->prepare("SELECT name from Mendeleiev where Z=:Z;");
-        //   $reqbis->execute(array(
-        //     "Z" => $idElement
-        //   ));
-        //   echo $reqbis->fetch();
-        //   echo "</li>\n";
-        // }
+      // Les ventes de l'utilisateur
+        $req = $db->prepare("SELECT product,price,status from usersSales where user=:id;");
+        $req->execute(array(
+          "id" => $userid
+        ));
+
+        while ($result = $req->fetch()){
+          $nom=$db->prepare("SELECT  name FROM products where id=:id;");
+            $reqbis->execute(array(
+              "id" => $result['product']
+            ));
+          $nom=$reqbis->fetch();
+          $nom=$nom['name'];
+          $status=$result['status'];
+          $prix=$result['price'];
+          echo "<li>Votre $nom, retourné pour $prix"."€, est $status</li>\n";
+        }
       ?>
       </ul>
       <br>
