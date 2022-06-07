@@ -41,7 +41,7 @@
           "id" => $userid
         ));
         $result = $req->fetch();
-        echo "Votre cagnotte s'élève à ".$result['sum']."€<br>\n";
+        echo "Votre cagnotte s'élève à ".$result['coins']."€<br>\n";
       ?>
     </div>
     <div id="infoMetal">
@@ -61,7 +61,7 @@
           $reqbis->execute(array(
             "Z" => $idElement
           ));
-          echo $reqbis->fetch();
+          echo $reqbis->fetch()['nom'];
           echo "</li>\n";
         }
       ?>
