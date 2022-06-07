@@ -3,8 +3,8 @@ include("includes/before_headers.php");
 
 $found = false;
 
-if(isset($_GET["productID"])){
-    $productID = $_GET["productID"];
+if(isset($_GET["id"])){
+    $productID = $_GET["id"];
     $prod_req = $db->prepare("SELECT * FROM products WHERE id = ?");
     $prod_req->execute(array($productID));
     $product = $prod_req->fetch();
