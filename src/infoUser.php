@@ -25,7 +25,7 @@
   <body>
     <div id="infoLogin">
       <?php
-        $req = $db->prepare("SELECT nom from usersAdresses where id=:id;");
+        $req = $db->prepare("SELECT nom from usersAdresses where user=:id;");
         $req->execute(array(
           "id" => $userid
         ));
@@ -36,7 +36,7 @@
     </div>
     <div id="infoCagnotte">
       <?php
-        $req = $db->prepare("SELECT coins from usersCoins where id=:id;");
+        $req = $db->prepare("SELECT coins from usersCoins where user=:id;");
         $req->execute(array(
           "id" => $userid
         ));
@@ -48,7 +48,7 @@
       Vous avez permis de récupérer :<br>
       <ul>
       <?php
-        $req = $db->prepare("SELECT element, sum(quantity) AS sum from usersExtractions where id=:id group by element;");
+        $req = $db->prepare("SELECT element, sum(quantity) AS sum from usersExtractions where user=:id group by element;");
         $req->execute(array(
           "id" => $userid
         ));
