@@ -29,10 +29,33 @@ if(!$found){
     $description = $product["description"];
 }
 
-?>
+if($found){
+
+    ?>
 <html>
     <?php include("includes/header.php"); ?>
-
     <?php include("includes/navbar.php"); ?>
 
+    <h1>
+        <?php echo $product["name"]; ?>
+    </h1>
+
+    <p>
+        <?php echo $product["description"]; ?>
+    </p>
+
 </html>
+    
+<?php
+
+}
+else{
+    ?> 
+<html>
+    <?php include("includes/header.php"); ?>
+    <?php include("includes/navbar.php"); ?>
+    <h1>Produit non trouvé</h1>
+</html>
+    
+<?php   
+}
