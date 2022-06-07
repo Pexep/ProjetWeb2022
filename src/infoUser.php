@@ -43,6 +43,7 @@
         $result = $req->fetch();
         echo "Votre cagnotte s'élève à ".$result['coins']."€<br>\n";
       ?>
+      <br>
     </div>
     <div id="infoMetal">
       Vous avez permis de récupérer :<br>
