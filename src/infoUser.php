@@ -5,10 +5,10 @@
   $title="Vos informations";
   $description="Page des informations des utilisateurs sur site komposant.com";
 
-  $login=$_SESSION['login'];
-  $req = $db->prepare("SELECT id from Customer where login=:login;");
+  //$login=$_SESSION['login'];
+  $req = $db->prepare("SELECT id from users where email=:login;");
   $req->execute(array(
-    "login" => "golgot77"
+    "login" => "golgot77@gmail.com"
   ));
 
   $result = $req->fetch();
@@ -30,7 +30,7 @@
     </div>
     <div id="infoCagnotte">
       <?php
-        $req = $db->prepare("SELECT stash from Customer where id=:id;");
+        $req = $db->prepare("SELECT coins from usersCoins where id=:id;");
         $req->execute(array(
           "id" => $userid
         ));
@@ -42,7 +42,7 @@
       Vous avez permis de récupérer :<br>
       <ul>
       <?php
-        $req = $db->prepare("SELECT element, sum(element) AS sum from Customer where id=:id group by element;");
+        $req = $db->prepare("SELECT element, sum(quantity) AS sum from usersExtractions where id=:id group by element;");
         $req->execute(array(
           "id" => $userid
         ));
@@ -51,7 +51,7 @@
           $qtte=$result['sum'];
           $idElement=$result['element'];
           echo "<li>$qtte mg de ";
-          $reqbis = $db->prepare("SELECT name from Mendeleiev where Z=:Z;");
+          $reqbis = $db->prepare("SELECT nam from Mendeleiev where Z=:Z;");
           $reqbis->execute(array(
             "Z" => $idElement
           ));
