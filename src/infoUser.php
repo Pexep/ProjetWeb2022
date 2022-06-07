@@ -61,8 +61,8 @@
           $reqbis->execute(array(
             "Z" => $idElement
           ));
-          echo $reqbis->fetch()['nom'];
-          echo "</li>\n";
+          $name=$reqbis->fetch();
+          echo $name['name']."</li>\n";
         }
       ?>
       </ul>
