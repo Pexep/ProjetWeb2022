@@ -1,7 +1,7 @@
 <?php
 include("database.php");
 
-if(isset($_POST['login']) and isset($_POST['password']) and isset($_POST['email'])){
+if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']) and isset($_POST['email'])){
 
     $insertion_possible = false;
 
