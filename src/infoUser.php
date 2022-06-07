@@ -73,7 +73,7 @@
       <ul>
       <?php
         // Les commandes de l'utilisateur
-        $req = $db->prepare("SELECT  'date',status,product FROM usersOrders where user=:id;");
+        $req = $db->prepare("SELECT  date,status,product FROM usersOrders where user=:id;");
         $req->execute(array(
           "id" => $userid
         ));
