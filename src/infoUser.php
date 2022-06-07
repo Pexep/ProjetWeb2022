@@ -47,7 +47,7 @@
           "id" => $userid
         ));
 
-        while ($result = $req->fetch();){
+        while ($result = $req->fetch()){
           $qtte=$result['sum'];
           $idElement=$result['element'];
           echo "<li>$qtte mg de ";
