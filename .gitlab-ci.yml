@@ -1,9 +1,12 @@
 stages:
   - build
   - deploy
-build:
+
+build-main:
   stage: build
   image: alpine
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE != "merge_request_event"
   before_script:
     - apk add tar
   script:
@@ -13,12 +16,47 @@ build:
     paths:
       - source.tar
 
+build-branches:
+  stage: build
+  image: alpine
+  rules:
+    - if: $CI_COMMIT_BRANCH != "master" && $CI_PIPELINE_SOURCE != "merge_request_event"
+  before_script:
+    - apk add tar
+  script:
+   - mv src k_$CI_COMMIT_BRANCH
+   - tar cvf source.tar k_$CI_COMMIT_BRANCH
+  artifacts:
+    paths:
+      - source.tar
+
+
+deploy_to_branches:
+  stage: deploy
+  image: alpine
+  rules:
+    - if: $CI_COMMIT_BRANCH != "master" && $CI_PIPELINE_SOURCE != "merge_request_event"
+  environment:
+    name: $CI_COMMIT_BRANCH
+    url: https://dwarves.iut-fbleau.fr/~foucher/k_$CI_COMMIT_BRANCH/
+  before_script:
+    - apk add openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
+  - scp -o StrictHostKeyChecking=no source.tar foucher@gatekeeper.iut-fbleau.fr:/export/home/an21/foucher/public_html/
+  - ssh -o StrictHostKeyChecking=no foucher@gatekeeper.iut-fbleau.fr "cd public_html/;rm -rf k_$CI_COMMIT_BRANCH; tar xfv source.tar;rm source.tar;cp db_config.php k_$CI_COMMIT_BRANCH/includes/config.php"
+
 deploy:
   stage: deploy
   image: alpine
   environment:
     name: prod
     url: https://dwarves.iut-fbleau.fr/~foucher/komposant/
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE != "merge_request_event"
   before_script:
     - apk add openssh-client
     - eval $(ssh-agent -s)

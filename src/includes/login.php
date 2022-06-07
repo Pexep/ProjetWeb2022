@@ -23,16 +23,32 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
         /* On ajoute les détails de connexion dans la session de l'utilisateur */
         $_SESSION['connected'] = true;
         $_SESSION['username'] = $result['email'];
+        $_SESSION['email'] = $result['email'];
         $_SESSION['password'] = $password;
+
+        /* Ajout des cookies pour rester connecté (pour l'instant on ne les utilise pas) */
         if (isset($_POST['stayconnected']) && $_POST['stayconnected'] == "on") {
             setcookie('adresseavoler', $result['email'], time()+60*60*24*30);
             setcookie('mdpavoler', $password, time()+60*60*24*30);
             print_r($_COOKIE);
         }
-        echo "Vous êtes connecté";
+
+        /** Redirection à la page où le client était */
+        if(isset($_SESSION['redirect_to'])){
+            $redirect_to = $_SESSION['redirect_to'];
+            unset($_SESSION['redirect_to']);
+            header('Location: '.$redirect_to);
+        }
+        else{
+            header('Location: index.php');
+        }
+
     } else {
         echo "\n Mauvais mot de passe / adresse mail";
     }
+} else {
+    /* Aucun champs n'a été rempli on demande à l'utilisateur de recommencer en le redirigeant sur la page de login*/
+    header('Location: ../login.php');
 }
 
 ?>
