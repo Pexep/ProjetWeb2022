@@ -12,7 +12,7 @@ if(isset($_GET["redirect_to"])){
 $_SESSION["redirect_to"] = $redirect_to;
 
 if(isset($_SESSION["connected"]) && $_SESSION["connected"] == true){
-    header("Location: account.php");
+    header("Location: infoUser.php"); // On redirige l'utilisateur sur son profil s'il était déjà connecté
 }
 
 ?>
