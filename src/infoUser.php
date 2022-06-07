@@ -79,7 +79,7 @@
         ));
 
         while ($result = $req->fetch()){
-          $nom=$db->prepare("SELECT  name FROM products where id=:id;");
+          $reqbis=$db->prepare("SELECT  name FROM products where id=:id;");
             $reqbis->execute(array(
               "id" => $result['product']
             ));
@@ -104,7 +104,7 @@
         ));
 
         while ($result = $req->fetch()){
-          $nom=$db->prepare("SELECT  name FROM products where id=:id;");
+          $reqbis=$db->prepare("SELECT  name FROM products where id=:id;");
             $reqbis->execute(array(
               "id" => $result['product']
             ));
