@@ -5,12 +5,18 @@ $found = false;
 
 if(isset($_GET["productID"])){
     $productID = $_GET["productID"];
-    $req = $db->prepare("SELECT * FROM products WHERE id = ?");
-    $req->execute(array($productID));
-    $product = $req->fetch();
+    $prod_req = $db->prepare("SELECT * FROM products WHERE id = ?");
+    $prod_req->execute(array($productID));
+    $product = $prod_req->fetch();
     if($product != false){
         $found = true;
+
+        $details_req = $db->prepare("SELECT * from productsDetails WHERE product = ?");
+
+        $details_req->execute(array($productID));
     }
+
+
 }
 
 
@@ -44,13 +50,13 @@ if($found){ ?>
 
             <table>
             <?php
-            // foreach () {
+            foreach ($details_req->fetchAll() as $detail) {
                 ?>
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $detail["name"]?></td>
+                        <td><?php echo $detail["value"]?></td>
                     </tr>
-                <?php //} 
+                <?php } 
             ?> 
             </table>
         </html>
