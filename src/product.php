@@ -29,26 +29,32 @@ if(!$found){
     $description = $product["description"];
 }
 
-if($found){
+if($found){ ?>
+        <html>
+            <?php include("includes/header.php"); ?>
+            <?php include("includes/navbar.php"); ?>
 
-    ?>
-<html>
-    <?php include("includes/header.php"); ?>
-    <?php include("includes/navbar.php"); ?>
+            <h1>
+                <?php echo $product["name"]; ?>
+            </h1>
 
-    <h1>
-        <?php echo $product["name"]; ?>
-    </h1>
+            <p>
+                <?php echo $product["description"]; ?>
+            </p>
 
-    <p>
-        <?php echo $product["description"]; ?>
-    </p>
-
-</html>
-    
-<?php
-
-}
+            <table>
+            <?php
+            // foreach () {
+                ?>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                <?php //} 
+            ?> 
+            </table>
+        </html>
+    <?php }
 else{
     ?> 
 <html>
