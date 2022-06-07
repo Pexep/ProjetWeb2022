@@ -5,8 +5,7 @@
   $title="Vos informations";
   $description="Page des informations des utilisateurs sur site komposant.com";
 
-  //$login=$_SESSION['login'];
-  $login='golgot77@gmail.com';
+  $login=$_SESSION['login'];
   $req = $db->prepare("SELECT id from users where email=:login;");
   $req->execute(array(
     "login" => $login
@@ -14,7 +13,6 @@
 
   $result = $req->fetch();
   $userid= $result["id"];
-  // $userId=mysqli_fetch_assoc(mysqli_query($bd,"Select id from Customer where login=\'$login\';"));
 ?>
 
 <!DOCTYPE html>

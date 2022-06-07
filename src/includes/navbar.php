@@ -20,7 +20,7 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
     </div>
     <?php
     if($connected){
-        echo '<a href="account.php" class="w3-bar-item w3-button w3-right">Mon compte</a>';
+        echo '<a href="infoUser.php" class="w3-bar-item w3-button w3-right">Mon compte</a>';
     }
     else{
         echo '<a href="login.php?redirect_to='.$path.'" class="w3-bar-item w3-button w3-right">Se connecter</a>';
