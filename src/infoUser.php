@@ -30,7 +30,7 @@
           "id" => $userid
         ));
         $nom=$req->fetch();
-        echo "Votre nom : $nom<br>\n"
+        echo "Votre nom : ".$nom['nom']."<br>\n"
       ?>
       <br>
     </div>
@@ -41,7 +41,7 @@
           "id" => $userid
         ));
         $result = $req->fetch();
-        echo "Votre cagnotte s'élève à $result €<br>\n";
+        echo "Votre cagnotte s'élève à ".$result['sum']."€<br>\n";
       ?>
     </div>
     <div id="infoMetal">
@@ -57,7 +57,7 @@
           $qtte=$result['sum'];
           $idElement=$result['element'];
           echo "<li>$qtte mg de ";
-          $reqbis = $db->prepare("SELECT nam from Mendeleiev where Z=:Z;");
+          $reqbis = $db->prepare("SELECT name from Mendeleiev where Z=:Z;");
           $reqbis->execute(array(
             "Z" => $idElement
           ));
