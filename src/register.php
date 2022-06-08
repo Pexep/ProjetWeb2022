@@ -18,7 +18,7 @@ $description = "Page pour créer un compte sur le site komposant.com";
             <label>Prénom</label>
             <input type="text" name="prenom" placeholder="Prénom" class="w3-input" required>
             <label>Adresse mail</label>
-            <input type="mail" name="login" placeholder="Adresse mail" class="w3-input" required>
+            <input type="mail" name="email" placeholder="Adresse mail" class="w3-input" required>
             <label>Mot de passe</label>
             <input type="password" name="password" placeholder="Mot de passe" class="w3-input" required>
             <label>Confirmez votre mot de passe</label>
