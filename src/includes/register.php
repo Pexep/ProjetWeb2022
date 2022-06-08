@@ -1,13 +1,16 @@
 <?php
 include("database.php");
 
-if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']) and isset($_POST['email'])){
+if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']) and isset($_POST['passwordverif']) and isset($_POST['email'])){
 
     $insertion_possible = false;
 
-    if (str_contains(''))
+    /* on valide tous les champs (si le mail est bien un mail, si le mot de passe et la confirmation de mot de passe sont pareils, si les noms / prénoms ne disposent que de lettres */
 
-    
+    if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && strcmp($_POST['password'], $_POST['passwordverif']) === 0 && preg_match("/^[a-zA-Z-' ]*$/", $_POST['nom']) && preg_match("/^[a-zA-Z-' ]*$/", $_POST['prenom'])){
+        echo "connexion valide";
+        $insertion_possible = true;
+    }
 
     /* To do: vérifier les champs + vérifier site un compte n'existe pas déjà avec ce login / email.
     */
