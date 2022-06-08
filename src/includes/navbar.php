@@ -22,7 +22,7 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
     if($connected){
         ?>
             <div class="w3-dropdown-hover w3-right">
-                <button class="w3-button">Prénom Nom</button>
+                <button class="w3-button"><?php echo $_SESSION["fullname"]; ?></button>
                 <div class="w3-dropdown-content w3-bar-block w3-card-4">
                     <a href="infoUser.php" class="w3-bar-item w3-button">Mon compte</a>
                     <a href="includes/logout.php" class="w3-bar-item w3-button">Déconnexion</a>
