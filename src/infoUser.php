@@ -1,7 +1,7 @@
 <?php
-  include("includes/database.php");
+  include("includes/before_headers.php");
   /* Personnalisation des infos de la page */
-  session_start();
+
   $title="Vos informations";
   $description="Page des informations des utilisateurs sur site komposant.com";
 
