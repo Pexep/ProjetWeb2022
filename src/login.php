@@ -39,6 +39,16 @@ if(isset($_SESSION["connected"]) && $_SESSION["connected"] == true){
     
             <p>Vous n'avez pas de compte ? <a href="register.php">s'enregistrer</a></p>
         </form>
+
+        <?php if (isset($_SESSION['loginerror'])){?>
+        <div class="w3-panel w3-red">
+            <h4><?php echo $_SESSION['loginerror']; ?></h4>
+        </div>
+        <?php 
+                unset($_SESSION['loginerror']);
+            } 
+        ?>
+
     </body>
 
 </html>
