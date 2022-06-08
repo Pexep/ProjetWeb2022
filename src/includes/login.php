@@ -24,6 +24,7 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
         $_SESSION['connected'] = true;
         $_SESSION['login'] = $result['email'];
         $_SESSION['password'] = $password;
+        $_SESSION['fullname'] = $result['firstname'] . " " . $result['lastname'];
 
         /* Ajout des cookies pour rester connecté (pour l'instant on ne les utilise pas) */
         if (isset($_POST['stayconnected']) && $_POST['stayconnected'] == "on") {

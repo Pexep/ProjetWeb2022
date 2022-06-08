@@ -19,10 +19,12 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
         
         /* Insérer dans la base de données le nouvel utilisateur si les conditions sont respectées */
 
-        $req = $db->prepare('INSERT INTO users (password, email) VALUES (:password, :email)');
+        $req = $db->prepare('INSERT INTO users (password, email, firstname, lastname) VALUES (:password, :email, :firstname, :lastname)');
         $req->execute(array(
             'password' => password_hash($_POST['password'], PASSWORD_BCRYPT),
-            'email' => $_POST['email']
+            'email' => $_POST['email'],
+            'firstname' => $_POST['prenom'],
+            'lastname' => $_POST['nom']
         ));
 
     }
