@@ -16,7 +16,6 @@ if(isset($_GET["id"])){
         $details_req->execute(array($productID));
     }
 
-
 }
 
 
@@ -65,9 +64,10 @@ else{
     ?> 
 <html>
     <?php include("includes/header.php"); ?>
-    <?php include("includes/navbar.php"); ?>
-    <h1>Produit non trouvé</h1>
+    <body>
+        <?php include("includes/navbar.php"); ?>
+        <h1>Produit non trouvé</h1>
+    </body>
 </html>
-    
-<?php   
+<?php
 }

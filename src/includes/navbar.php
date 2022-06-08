@@ -9,7 +9,7 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
 
 <div class="w3-bar w3-light-grey">
     <a href="index.php" class="w3-bar-item w3-button">Komposant</a>
-    <a href="#" class="w3-bar-item w3-button">Nos produits</a>
+    <a href="catalog.php" class="w3-bar-item w3-button">Nos produits</a>
     <div class="w3-dropdown-hover">
     <button class="w3-button">À propos</button>
         <div class="w3-dropdown-content w3-bar-block w3-card-4">

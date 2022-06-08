@@ -13,7 +13,7 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
 
     $result = $req->fetch();
 
-    if($result){
+    if($result){ /* Si on trouve un compte dans la base de données avec le même mot de passe alors on continue la vérification */ 
         if(password_verify($_POST['password'], $result['password'])){
             $connexion_valide = true;
         }
@@ -43,10 +43,11 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
         }
 
     } else {
+        /* Todo: rediriger à la page de login avec un message mauvais mot de passe */
         echo "\n Mauvais mot de passe / adresse mail";
     }
 } else {
-    /* Aucun champs n'a été rempli on demande à l'utilisateur de recommencer en le redirigeant sur la page de login*/
+    /* Aucun champ n'a été rempli on demande à l'utilisateur de recommencer en le redirigeant sur la page de login*/
     header('Location: ../login.php');
 }
 
