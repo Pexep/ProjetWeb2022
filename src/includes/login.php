@@ -44,10 +44,13 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
 
     } else {
         /* Todo: rediriger à la page de login avec un message mauvais mot de passe */
-        echo "\n Mauvais mot de passe / adresse mail";
+        $_SESSION['loginerror']="Mauvaise adresse mail ou mot de passe";
+        header("Location: ../login.php");
+
     }
 } else {
     /* Aucun champ n'a été rempli on demande à l'utilisateur de recommencer en le redirigeant sur la page de login*/
+    $_SESSION['loginerror']="Champs vides";
     header('Location: ../login.php');
 }
 
