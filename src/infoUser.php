@@ -23,12 +23,12 @@
   <body>
     <div id="infoLogin">
       <?php
-        $req = $db->prepare("SELECT nom from usersAdresses where user=:id;");
+        $req = $db->prepare("SELECT firstname,lastname from users where id=:id;");
         $req->execute(array(
           "id" => $userid
         ));
         $nom=$req->fetch();
-        echo "Votre nom : ".$nom['nom']."<br>\n"
+        echo "Votre nom : ".$nom['firstname']." ".$nom["lastname"]."<br>\n"
       ?>
       <br>
     </div>
