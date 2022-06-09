@@ -1,10 +1,10 @@
 <?php
-
 include("includes/before_headers.php");
 
 $title = "Nos produits";
 $description = "Nos produits disponibles sur notre site";
 $display_categories = true;
+
 if(isset($_GET["categorie"])){
     $display_categories = false;
     $products = $db->prepare("SELECT * from products WHERE category = ?");
@@ -22,7 +22,7 @@ else {
     <?php include("includes/header.php"); ?>
     <body>
         <?php include("includes/navbar.php"); ?>
-        
+
         <h1>Nos produits</h1>
 
         <?php
