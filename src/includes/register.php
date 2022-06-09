@@ -9,10 +9,20 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
 
     if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && strcmp($_POST['password'], $_POST['passwordverif']) === 0 && preg_match("/^[a-zA-Z-' ]*$/", $_POST['nom']) && preg_match("/^[a-zA-Z-' ]*$/", $_POST['prenom'])){
         echo "connexion valide";
-        $insertion_possible = true;
+
+        $reqverif = $db->prepare('SELECT * FROM  users WHERE email=?');
+        $reqverif->execute(array($_POST['email']));
+
+        $verif = $reqverif->fetch();
+
+        if (!$verif){ /* si l'email n'est pas déjà présent dans la BD, on peut valider l'insertion */
+            $insertion_possible = true;
+        } else {
+            echo " utilisateur déjà présent dans la BD";
+        }
     }
 
-    /* To do: vérifier les champs + vérifier site un compte n'existe pas déjà avec ce login / email.
+    /* To do: vérifier site un compte n'existe pas déjà avec ce login / email.
     */
 
     if($insertion_possible){
@@ -26,6 +36,7 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
             'firstname' => $_POST['prenom'],
             'lastname' => $_POST['nom']
         ));
+
 
     }
 
