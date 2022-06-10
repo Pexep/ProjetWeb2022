@@ -28,7 +28,12 @@ else {
         <?php
         if($display_categories){
             foreach($list_cat as $cat){
-                echo "<a href='?categorie=".$cat["id"]."'>".$cat["title"]."</a><br>";
+                ?><div class="w3-quarter">
+                    <?php
+                    echo "<a href='?categorie=".$cat["id"]."'>".$cat["title"]."</a><br>";
+                    ?>
+                </div>
+                <?php
             }
         } else {
             foreach($products as $product){
