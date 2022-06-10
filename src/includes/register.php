@@ -40,7 +40,7 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
     }
 
 } else{
-    $_SESSION['registererror'] = "Champs vides, veuillez être intelligent....";
+    $_SESSION['registererror'] = "Champs vides, veuillez réessayer";
     header("Location: ../register.php");
 }
 
