@@ -30,9 +30,7 @@ else {
             foreach($list_cat as $cat){?>
 
                 <div class="w3-card-4">
-                    <?php echo "<img src=\"";
-                    echo $cat["image"];
-                    echo "\">"; ?>
+                    <?php echo "<img src=\"".$cat["image"]." width=\"400\" height=\"400\"\">"; ?>
                     <?php echo "<a href='?categorie=".$cat["id"]."'>".$cat["title"]."</a><br>"; ?>
                     
                 </div>
