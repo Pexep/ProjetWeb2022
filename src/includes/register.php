@@ -2,7 +2,7 @@
 include("before_headers.php");
 
 if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']) and isset($_POST['passwordverif']) and isset($_POST['email'])){
-
+    unset($_SESSION["redirect_to"]);
     $insertion_possible = false;
 
     /* on valide tous les champs (si le mail est bien un mail, si le mot de passe et la confirmation de mot de passe sont pareils, si les noms / prénoms ne disposent que de lettres */
@@ -17,13 +17,10 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
         if (!$verif){ /* si l'email n'est pas déjà présent dans la BD, on peut valider l'insertion */
             $insertion_possible = true;
         } else {
-            $_SESSION['registererror']="Mail déjà utilisé";
+            $_SESSION['registererror'] = "Adresse mail déjà utilisée";
             header("Location: ../register.php");
         }
     }
-
-    /* To do: vérifier site un compte n'existe pas déjà avec ce login / email.
-    */
 
     if($insertion_possible){
         
@@ -36,12 +33,14 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
             'firstname' => $_POST['prenom'],
             'lastname' => $_POST['nom']
         ));
-
+        
+        /* Redirection vers la page de login */
+        header("Location: ../login.php");
 
     }
 
 } else{
-    $_SESSION['registererror']="Champs vides, veuillez être intelligent....";
+    $_SESSION['registererror'] = "Champs vides, veuillez être intelligent....";
     header("Location: ../register.php");
 }
 

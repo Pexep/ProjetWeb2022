@@ -29,5 +29,6 @@ $url.= $_SERVER['REQUEST_URI'];
     <meta property="og:description" content="<?php echo $description?>">
     <meta property="og:url" content="<?php echo $url?>">
     <meta property="og:site_name" content="Komposant">
+    <link rel="shortcut icon" href="images/komposant_logo.png" type="image/png">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
