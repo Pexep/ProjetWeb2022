@@ -39,7 +39,7 @@ else {
         } else {
             foreach($products as $product){
                 ?>
-                    <a href="product.php?id=<?php echo $product["id"]; ?>&action='achat'">
+                    <a href="product.php?id=<?php echo $product["id"]; ?>&action=achat">
                         <div class="w3-card-4">
                             <img src="<?php echo $product["image"];?>" width="400" height="400" alt="<?php echo $product["name"];?>">
                             <div class="w3-container w3-center">
