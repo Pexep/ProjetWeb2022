@@ -13,7 +13,7 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
 
     $result = $req->fetch();
 
-    if($result){
+    if($result){ /* Si on trouve un compte dans la base de données avec le même mot de passe alors on continue la vérification */ 
         if(password_verify($_POST['password'], $result['password'])){
             $connexion_valide = true;
         }
@@ -22,9 +22,9 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
     if($connexion_valide){
         /* On ajoute les détails de connexion dans la session de l'utilisateur */
         $_SESSION['connected'] = true;
-        $_SESSION['username'] = $result['email'];
-        $_SESSION['email'] = $result['email'];
+        $_SESSION['login'] = $result['email'];
         $_SESSION['password'] = $password;
+        $_SESSION['fullname'] = $result['firstname'] . " " . $result['lastname'];
 
         /* Ajout des cookies pour rester connecté (pour l'instant on ne les utilise pas) */
         if (isset($_POST['stayconnected']) && $_POST['stayconnected'] == "on") {
@@ -40,14 +40,18 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
             header('Location: '.$redirect_to);
         }
         else{
-            header('Location: index.php');
+            header('Location: ../index.php');
         }
 
     } else {
-        echo "\n Mauvais mot de passe / adresse mail";
+        /* Todo: rediriger à la page de login avec un message mauvais mot de passe */
+        $_SESSION['loginerror']="Mauvaise adresse mail ou mot de passe";
+        header("Location: ../login.php");
+
     }
 } else {
-    /* Aucun champs n'a été rempli on demande à l'utilisateur de recommencer en le redirigeant sur la page de login*/
+    /* Aucun champ n'a été rempli on demande à l'utilisateur de recommencer en le redirigeant sur la page de login*/
+    $_SESSION['loginerror']="Champs vides";
     header('Location: ../login.php');
 }
 

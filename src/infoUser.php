@@ -1,12 +1,11 @@
 <?php
-  include("includes/database.php");
+  include("includes/before_headers.php");
   /* Personnalisation des infos de la page */
-  session_start();
+
   $title="Vos informations";
   $description="Page des informations des utilisateurs sur site komposant.com";
 
-  //$login=$_SESSION['login'];
-  $login='golgot77@gmail.com';
+  $login=$_SESSION['login'];
   $req = $db->prepare("SELECT id from users where email=:login;");
   $req->execute(array(
     "login" => $login
@@ -14,29 +13,28 @@
 
   $result = $req->fetch();
   $userid= $result["id"];
-  // $userId=mysqli_fetch_assoc(mysqli_query($bd,"Select id from Customer where login=\'$login\';"));
 ?>
 
 <!DOCTYPE html>
 <html>
     <?php include("includes/navbar.php"); ?>
-      <div>Vos informations</div>
+      <h1>Vos informations</h1>
     <?php include("includes/header.php") ?>
   <body>
     <div id="infoLogin">
       <?php
-        $req = $db->prepare("SELECT nom from usersAdresses where user=:id;");
+        $req = $db->prepare("SELECT firstname,lastname from users where id=:id;");
         $req->execute(array(
           "id" => $userid
         ));
         $nom=$req->fetch();
-        echo "Votre nom : ".$nom['nom']."<br>\n"
+        echo "Votre nom : ".$nom['firstname']." ".$nom["lastname"]."<br>\n"
       ?>
       <br>
     </div>
     <div id="infoCagnotte">
       <?php
-        $req = $db->prepare("SELECT coins from usersCoins where user=:id;");
+        $req = $db->prepare("SELECT coins from users where id=:id;");
         $req->execute(array(
           "id" => $userid
         ));

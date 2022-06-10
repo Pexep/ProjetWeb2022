@@ -3,14 +3,19 @@ include("includes/before_headers.php");
 
 $found = false;
 
-if(isset($_GET["productID"])){
-    $productID = $_GET["productID"];
-    $req = $db->prepare("SELECT * FROM products WHERE id = ?");
-    $req->execute(array($productID));
-    $product = $req->fetch();
+if(isset($_GET["id"])){
+    $productID = $_GET["id"];
+    $prod_req = $db->prepare("SELECT * FROM products WHERE id = ?");
+    $prod_req->execute(array($productID));
+    $product = $prod_req->fetch();
     if($product != false){
         $found = true;
+
+        $details_req = $db->prepare("SELECT * from productsDetails WHERE product = ?");
+
+        $details_req->execute(array($productID));
     }
+
 }
 
 
@@ -29,10 +34,44 @@ if(!$found){
     $description = $product["description"];
 }
 
-?>
+if($found){ ?>
+        <html>
+            <?php include("includes/header.php"); ?>
+            <body>
+                <?php include("includes/navbar.php"); ?>
+
+                <h1>
+                    <?php echo $product["name"]; ?>
+                </h1>
+
+                <p>
+                    <?php echo $product["description"]; ?>
+                </p>
+
+                <img src="<?php echo $product["image"];?>" alt="Image produit" width="500" height="500" srcset="">
+
+                <table>
+                <?php
+                foreach ($details_req->fetchAll() as $detail) {
+                    ?>
+                        <tr>
+                            <td><?php echo $detail["name"]?></td>
+                            <td><?php echo $detail["value"]?></td>
+                        </tr>
+                    <?php } 
+                ?> 
+                </table>
+            </body>
+        </html>
+    <?php }
+else{
+    ?> 
 <html>
     <?php include("includes/header.php"); ?>
-
-    <?php include("includes/navbar.php"); ?>
-
+    <body>
+        <?php include("includes/navbar.php"); ?>
+        <h1>Produit non trouvé</h1>
+    </body>
 </html>
+<?php
+}

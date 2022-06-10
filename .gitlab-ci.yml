@@ -15,6 +15,7 @@ build-main:
   artifacts:
     paths:
       - source.tar
+    expire_in: 2 hours
 
 build-branches:
   stage: build
@@ -29,6 +30,7 @@ build-branches:
   artifacts:
     paths:
       - source.tar
+    expire_in: 2 hours
 
 
 deploy_to_branches:
