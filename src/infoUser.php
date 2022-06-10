@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
     <?php include("includes/navbar.php"); ?>
-      <div>Vos informations</div>
+      <h1>Vos informations</h1>
     <?php include("includes/header.php") ?>
   <body>
     <div id="infoLogin">
@@ -34,7 +34,7 @@
     </div>
     <div id="infoCagnotte">
       <?php
-        $req = $db->prepare("SELECT coins from usersCoins where user=:id;");
+        $req = $db->prepare("SELECT coins from users where id=:id;");
         $req->execute(array(
           "id" => $userid
         ));

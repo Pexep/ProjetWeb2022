@@ -40,7 +40,7 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
             header('Location: '.$redirect_to);
         }
         else{
-            header('Location: index.php');
+            header('Location: ../index.php');
         }
 
     } else {

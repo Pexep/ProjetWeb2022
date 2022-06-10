@@ -47,6 +47,8 @@ if($found){ ?>
                 <?php echo $product["description"]; ?>
             </p>
 
+            <img src="<?php echo $product["image"]?>" alt="Image produit" srcset="">
+
             <table>
             <?php
             foreach ($details_req->fetchAll() as $detail) {
