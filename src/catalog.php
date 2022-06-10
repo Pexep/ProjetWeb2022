@@ -35,7 +35,7 @@ else {
                 ?>
                     <a href="product.php?id=<?php echo $product["id"]; ?>">
                         <div class="w3-card-4">
-                            <img src="<?php echo $product["image"];?>" width="500" height="500" alt="<?php echo $product["name"];?>">
+                            <img src="<?php echo $product["image"];?>" width="400" height="400" alt="<?php echo $product["name"];?>">
                             <div class="w3-container w3-center">
                                 <p><?php echo $product["name"];?></p>
                             </div>
