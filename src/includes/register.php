@@ -22,9 +22,6 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
         }
     }
 
-    /* To do: vérifier site un compte n'existe pas déjà avec ce login / email.
-    */
-
     if($insertion_possible){
         
         /* Insérer dans la base de données le nouvel utilisateur si les conditions sont respectées */
