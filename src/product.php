@@ -48,7 +48,7 @@ if($found){ ?>
                     <?php echo $product["description"]; ?>
                 </p>
 
-                <img src="<?php echo $product["image"]?>" alt="Image produit" srcset="">
+                <img src="<?php echo $product["image"]?>" alt="Image produit" width="500" height="500" srcset="">
 
                 <table>
                 <?php
