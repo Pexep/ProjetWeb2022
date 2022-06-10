@@ -29,8 +29,8 @@ else {
         if($display_categories){
             foreach($list_cat as $cat){
                 ?><div class="w3-quarter">
-                    <?php
-                    echo "<img src=\"".echo $cat["image"]."\">";
+                    
+                    <?php echo "<img src=\"".echo $cat["image"]."\">";
                     echo "<a href='?categorie=".$cat["id"]."'>".$cat["title"]."</a><br>";
                     ?>
                 </div>
