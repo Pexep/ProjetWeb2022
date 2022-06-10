@@ -27,12 +27,12 @@ else {
 
         <?php
         if($display_categories){
-            foreach($list_cat as $cat){
-                ?><div class="w3-card-4">
+            foreach($list_cat as $cat){?>
+
+                <div class="w3-card-4">
+                    <?php echo "<img src=\"".echo $cat["image"]."\">"; ?>
+                    <?php echo "<a href='?categorie=".$cat["id"]."'>".$cat["title"]."</a><br>"; ?>
                     
-                    <?php echo "<img src=\"".echo $cat["image"]."\">";
-                    echo "<a href='?categorie=".$cat["id"]."'>".$cat["title"]."</a><br>";
-                    ?>
                 </div>
                 <?php
             }
