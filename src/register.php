@@ -1,6 +1,7 @@
 <?php
 $title = "S'enregistrer - Komposant";
 $description = "Page pour créer un compte sur le site komposant.com";
+include("includes/before_headers.php");
 ?>
 
 <html>
@@ -27,5 +28,16 @@ $description = "Page pour créer un compte sur le site komposant.com";
             <input type="submit" value="Inscription" class="w3-button w3-green">
             <br>
         </form>
+        
+        <?php if (isset($_SESSION['registererror'])){?>
+        <div class="w3-panel w3-red">
+            <h4><?php echo $_SESSION['registererror']; ?></h4>
+        </div>
+        <?php 
+                unset($_SESSION['registererror']);
+            } 
+        ?>
+
+    </body>
 
 </html>
