@@ -1,5 +1,5 @@
 <?php
-include("database.php");
+include("before_headers.php");
 
 if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']) and isset($_POST['passwordverif']) and isset($_POST['email'])){
 
@@ -8,7 +8,6 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
     /* on valide tous les champs (si le mail est bien un mail, si le mot de passe et la confirmation de mot de passe sont pareils, si les noms / prénoms ne disposent que de lettres */
 
     if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && strcmp($_POST['password'], $_POST['passwordverif']) === 0 && preg_match("/^[a-zA-Z-' ]*$/", $_POST['nom']) && preg_match("/^[a-zA-Z-' ]*$/", $_POST['prenom'])){
-        echo "connexion valide";
 
         $reqverif = $db->prepare('SELECT * FROM  users WHERE email=?');
         $reqverif->execute(array($_POST['email']));
@@ -18,7 +17,8 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
         if (!$verif){ /* si l'email n'est pas déjà présent dans la BD, on peut valider l'insertion */
             $insertion_possible = true;
         } else {
-            echo " utilisateur déjà présent dans la BD";
+            $_SESSION['registererror']="Mail déjà utilisé";
+            header("Location: ../register.php");
         }
     }
 
@@ -41,6 +41,7 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
     }
 
 } else{
+    $_SESSION['registererror']="Champs vides, veuillez être intelligent....";
     header("Location: ../register.php");
 }
 
