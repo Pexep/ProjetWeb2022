@@ -32,20 +32,20 @@ else {
                 <div class="w3-card-4">
                     <?php echo "<img src=\"".$cat["image"]."\" width=\"150\" height=\"150\">"; ?>
                     <?php echo "<a href='?categorie=".$cat["id"]."'>".$cat["title"]."</a><br>"; ?>
-                    
+
                 </div>
                 <?php
             }
         } else {
             foreach($products as $product){
                 ?>
-                    <a href="product.php?id=<?php echo $product["id"]; ?>">
+                    <a href="product.php?id=<?php echo $product["id"]; ?>&action='vente'">
                         <div class="w3-card-4">
                             <img src="<?php echo $product["image"];?>" width="400" height="400" alt="<?php echo $product["name"];?>">
                             <div class="w3-container w3-center">
                                 <p><?php echo $product["name"];?></p>
                             </div>
-                        </div> 
+                        </div>
                     </a>
                 <?php
             }
