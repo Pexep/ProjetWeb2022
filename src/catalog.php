@@ -32,7 +32,16 @@ else {
             }
         } else {
             foreach($products as $product){
-                echo "<a href='product.php?id=".$product["id"]."'>".$product["name"]."</a><br>";
+                ?>
+                    <a href="product.php?id=<?php echo $product["id"]; ?>">
+                        <div class="w3-card-4">
+                            <img src="<?php echo $product["image"];?>" alt="<?php echo $product["name"];?>">
+                            <div class="w3-container w3-center">
+                                <p><?php echo $product["name"];?></p>
+                            </div>
+                        </div> 
+                    </a>
+                <?php
             }
         }
         ?>
