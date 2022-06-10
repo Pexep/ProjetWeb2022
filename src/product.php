@@ -37,29 +37,31 @@ if(!$found){
 if($found){ ?>
         <html>
             <?php include("includes/header.php"); ?>
-            <?php include("includes/navbar.php"); ?>
+            <body>
+                <?php include("includes/navbar.php"); ?>
 
-            <h1>
-                <?php echo $product["name"]; ?>
-            </h1>
+                <h1>
+                    <?php echo $product["name"]; ?>
+                </h1>
 
-            <p>
-                <?php echo $product["description"]; ?>
-            </p>
+                <p>
+                    <?php echo $product["description"]; ?>
+                </p>
 
-            <img src="<?php echo $product["image"]?>" alt="Image produit" srcset="">
+                <img src="<?php echo $product["image"]?>" alt="Image produit" srcset="">
 
-            <table>
-            <?php
-            foreach ($details_req->fetchAll() as $detail) {
-                ?>
-                    <tr>
-                        <td><?php echo $detail["name"]?></td>
-                        <td><?php echo $detail["value"]?></td>
-                    </tr>
-                <?php } 
-            ?> 
-            </table>
+                <table>
+                <?php
+                foreach ($details_req->fetchAll() as $detail) {
+                    ?>
+                        <tr>
+                            <td><?php echo $detail["name"]?></td>
+                            <td><?php echo $detail["value"]?></td>
+                        </tr>
+                    <?php } 
+                ?> 
+                </table>
+            </body>
         </html>
     <?php }
 else{
