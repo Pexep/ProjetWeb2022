@@ -7,7 +7,9 @@ $description="Page d'accueil du site komposant.com";
 
 <!DOCTYPE html>
 <html>
-    <?php include("includes/navbar.php"); ?>
-    <div>Accueil du site</div>
     <?php include("includes/header.php") ?>
+    <body>
+        <?php include("includes/navbar.php"); ?>
+        <div>Accueil du site</div>
+    </body>
 </html>
