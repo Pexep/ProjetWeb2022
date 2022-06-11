@@ -1,7 +1,7 @@
 <?php
 include("includes/before_headers.php");
 
-$title = "Nos produits disponibles à la vente";
+$title = "Nos produits - Vente";
 $description = "Nos produits disponibles à la vente sur notre site";
 $display_categories = true;
 
@@ -23,7 +23,7 @@ else {
     <body>
         <?php include("includes/navbar.php"); ?>
 
-        <h1>Nos produits</h1>
+        <h1>Nos produits disponibles à la vente</h1>
 
         <?php
         if($display_categories){
