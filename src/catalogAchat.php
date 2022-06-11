@@ -2,12 +2,12 @@
 include("includes/before_headers.php");
 
 $title = "Nos produits";
-$description = "Nos produits disponibles sur notre site";
+$description = "Nos produits disponibles à l'achat sur notre site";
 $display_categories = true;
 
 if(isset($_GET["categorie"])){
     $display_categories = false;
-    $products = $db->prepare("SELECT * from products WHERE category = ?");
+    $products = $db->prepare("SELECT p.id, p.name, p.image,  from products p JOIN businessSell b ON p.id=b.product WHERE category = ?");
     $products->execute(array($_GET["categorie"]));
 }
 else {
