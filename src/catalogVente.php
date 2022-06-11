@@ -1,7 +1,7 @@
 <?php
 include("includes/before_headers.php");
 
-$title = "Nos produits";
+$title = "Nos produits disponibles à la vente";
 $description = "Nos produits disponibles à la vente sur notre site";
 $display_categories = true;
 
@@ -11,7 +11,7 @@ if(isset($_GET["categorie"])){
     $products->execute(array($_GET["categorie"]));
 }
 else {
-    $list_cat = $db->prepare("SELECT * from categories");
+    $list_cat = $db->prepare("SELECT * from categories WHERE id IN (SELECT p.category from products p INNER JOIN businessBuy b ON p.id=b.product)");
     $list_cat->execute();
 }
 ?>
