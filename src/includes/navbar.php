@@ -9,7 +9,8 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
 
 <div class="w3-bar w3-light-grey">
     <a href="index.php" class="w3-bar-item w3-button">Komposant</a>
-    <a href="catalog.php" class="w3-bar-item w3-button">Nos produits</a>
+    <a href="catalogAchat.php" class="w3-bar-item w3-button">Acheter</a>
+    <a href="catalogVente.php" class="w3-bar-item w3-button">Vendre</a>
     <div class="w3-dropdown-hover">
     <button class="w3-button">À propos</button>
         <div class="w3-dropdown-content w3-bar-block w3-card-4">
@@ -28,11 +29,11 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
                     <a href="includes/logout.php" class="w3-bar-item w3-button">Déconnexion</a>
                 </div>
             </div>
-            
+
         <?php
     }
     else{
         echo '<a href="login.php?redirect_to='.$path.'" class="w3-bar-item w3-button w3-right">Se connecter</a>';
     }
     ?>
-</div> 
+</div>
