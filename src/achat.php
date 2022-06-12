@@ -21,7 +21,7 @@ if(isset($_GET["id"])){
 
 }
 
-if(isset($_GET["action"]) && $found){
+if(isset($found){
       $achat_req = $db->prepare("SELECT bs.product,bs.price,bs.business,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ?");
       $achat_req->execute(array($productID));
       $achat = $achat_req->fetch();
@@ -73,22 +73,27 @@ echo "finalisation";
 
 
 }elseif($found && $connected && $action){ ?>
+  <html>
+      <?php include("includes/header.php"); ?>
+      <body>
+          <?php include("includes/navbar.php"); ?>
+          <?php if (!$found){?>
+          <h1>Achat de <?php echo $product["name"]?></h1>
+          <br>
+          <label for="comp-select">Choisissez une entreprise:</label>
+          <select name="company" id="comp-select" form="comp-select">
+              <?php
+              foreach ($achat_req->fetchAll() as $entreprise) {
+                  ?>
+              <option value="<?php echo $entreprise['business']?>"><?php echo $entreprise['name']?></option>
+            <?php } ?>
+          </select>
 
-<h1>Achat de <?php echo $product["name"]?></h1>
-<br>
-<label for="comp-select">Choisissez une entreprise:</label>
-<select name="company" id="comp-select" form="comp-select">
-    <?php
-    foreach ($achat_req->fetchAll() as $entreprise) {
-        ?>
-    <option value="<?php echo $entreprise['business']?>"><?php echo $entreprise['name']?></option>
-  <?php } ?>
-</select>
-
-<form id="comp-select" method="get" action="">
-  <input type="submit" value="Continuer">
-</form>
-
+          <form id="comp-select" method="get" action="">
+            <input type="submit" value="Continuer">
+          </form>
+      </body>
+    </html>
 <?php
 }else{ ?>
   <html>
