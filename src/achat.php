@@ -21,7 +21,7 @@ if(isset($_GET["id"])){
 
 }
 
-if(isset($found){
+if(isset($found)){
       $achat_req = $db->prepare("SELECT bs.product,bs.price,bs.business,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ?");
       $achat_req->execute(array($productID));
       $achat = $achat_req->fetch();
