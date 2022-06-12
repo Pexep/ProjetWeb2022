@@ -79,16 +79,19 @@ echo "finalisation";
           <?php include("includes/navbar.php"); ?>
           <h1>Achat de <?php echo $product["name"]?></h1>
           <br>
-          <label for="comp-select">Choisissez une entreprise:</label>
+          <label for="comp-select">Choisissez une entreprise:</label><br>
           <select name="company" id="comp-select" form="comp-select">
+            <option value="">--Selectionnez--</option>
+            <option value="<?php echo $achat['business']?>"><?php echo $achat['name']?></option>
               <?php
               foreach ($achat_req->fetchAll() as $entreprise) {
                   ?>
               <option value="<?php echo $entreprise['business']?>"><?php echo $entreprise['name']?></option>
             <?php } ?>
           </select>
-
+          <br>
           <form id="comp-select" method="get" action="">
+            <input name="id" type="hidden" value="<?php echo $productID ?>">
             <input type="submit" value="Continuer">
           </form>
       </body>
