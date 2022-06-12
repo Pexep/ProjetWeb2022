@@ -41,9 +41,9 @@ if ($connected){
   $userid= $result["id"];
 }
 
-if (isset($_GET['comp-select']) && $connected && $action){
+if (isset($_GET['company']) && $connected && $action){
   $achat_final_req = $db->prepare("SELECT bs.product,bs.price,bs.business,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ? AND business = ?");
-  $achat_final_req->execute(array($productID),array($_GET['comp-select']));
+  $achat_final_req->execute(array($productID),array($_GET['company']));
   $achat_final = $achat_final_req->fetch();
   if ($achat_final != false){
     $final = true;
@@ -79,6 +79,9 @@ echo "finalisation";
           <?php include("includes/navbar.php"); ?>
           <h1>Achat de <?php echo $product["name"]?></h1>
           <br>
+          <form id="comp-select" method="get" action="">
+            <input name="id" type="hidden" value="<?php echo $productID ?>">
+          </form>
           <label for="comp-select">Choisissez une entreprise:</label><br>
           <select name="company" id="comp-select" form="comp-select">
             <option value="">--Selectionnez--</option>
@@ -90,10 +93,8 @@ echo "finalisation";
             <?php } ?>
           </select>
           <br>
-          <form id="comp-select" method="get" action="">
-            <input name="id" type="hidden" value="<?php echo $productID ?>">
-            <input type="submit" value="Continuer">
-          </form>
+
+          <input type="submit" value="Continuer" form="comp-select">
       </body>
     </html>
 <?php
