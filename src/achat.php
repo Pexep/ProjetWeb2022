@@ -77,7 +77,6 @@ echo "finalisation";
       <?php include("includes/header.php"); ?>
       <body>
           <?php include("includes/navbar.php"); ?>
-          <?php if (!$found){?>
           <h1>Achat de <?php echo $product["name"]?></h1>
           <br>
           <label for="comp-select">Choisissez une entreprise:</label>
