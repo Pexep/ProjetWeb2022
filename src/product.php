@@ -80,7 +80,7 @@ if($found){ ?>
                     <?php }
                 ?>
                 </table>
-
+                <br>
                 <?php
                 if ($action){
                   if ($_GET["action"]=="achat"){?>
