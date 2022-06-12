@@ -84,14 +84,10 @@ if($found){ ?>
                 <?php
                 if ($action){
                   if ($_GET["action"]=="achat"){?>
-                     <form action="achat.php?id=<?php echo $productID?>">
-                       <input type="button" value="Acheter">
-                     </form>
+                     <button onclick="window.location.href = 'achat.php?id=<?php echo $productID?>';">Acheter</button>
                   <?php
                   }elseif ($_GET["action"]=="vente"){?>
-                    <form action="vente.php?id=<?php echo $productID?>">
-                      <input type="button" value="Vendre">
-                    </form>
+                    <button onclick="window.location.href = 'vente.php?id=<?php echo $productID?>';">Vendre</button>
                 <?php
                   }
                 }else{
