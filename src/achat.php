@@ -43,7 +43,7 @@ if ($connected){
 
 if (isset($_GET['company']) && $connected && $action){
   $achat_final_req = $db->prepare("SELECT bs.product,bs.price,bs.business,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ? AND business = ?");
-  $achat_final_req->execute(array($productID),array($_GET['company']));
+  $achat_final_req->execute(array($productID,$_GET['company']));
   $achat_final = $achat_final_req->fetch();
   if ($achat_final != false){
     $final = true;
