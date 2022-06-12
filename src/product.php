@@ -81,18 +81,23 @@ if($found){ ?>
                 ?>
                 </table>
 
-                <form action="<?php if ($_GET["action"]=="achat"){ echo "achat.php";}else { echo "vente.php";}?>?id=<?php echo $productID;?>" method="get">
-                  <input type="button" value="<?php if ($_GET["action"]=="achat"){ echo "Acheter";}elseif ($_GET["action"]=="vente") { echo "Vendre";}?>"<?php if (!$action){echo " disabled"}?>>
-                </form>
                 <?php
-                  if (!$action){
-                    echo " Produit non disponible ";
-                    if ($_GET["action"]=="achat"){
-                      echo "à l'achat\n";
-                    }elseif ($_GET["action"]=="vente") {
-                      echo "à la vente\n";
-                    }
+                if ($action){
+                  if ($_GET["action"]=="achat"){?>
+                     <a href="achat.php?id=<?php echo $productID?>" class="button">Acheter</a>
+                  <?php
+                  }elseif ($_GET["action"]=="vente"){?>
+                    <a href="vente.php?id=<?php echo $productID?>" class="button">Vendre</a>
+                <?php
                   }
+                }else{
+                  echo " Produit non disponible ";
+                  if ($_GET["action"]=="achat"){
+                    echo "à l'achat\n";
+                  }elseif ($_GET["action"]=="vente") {
+                    echo "à la vente\n";
+                  }
+                }
                 ?>
             </body>
         </html>
