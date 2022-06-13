@@ -2,7 +2,7 @@
 // Utilisé pour afficher la barre de navigation
 
 // Récupérer le path de l'utilisateur pour le mettre dans le lien de la barre de navigation
-$path = $_SERVER['PHP_SELF'];
+$path = $_SERVER['REQUEST_URI'];
 $path = urlencode($path);
 $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
 ?>
