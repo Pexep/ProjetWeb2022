@@ -8,7 +8,8 @@
 
 # Au sein de votre équipe projet, qui a eu le rôle de chef de projet ? Pourquoi ?
 
-Au sein du projet, le chef de projet est Yvan Foucher. 
+Au sein du projet, le chef de projet est Yvan Foucher. Son expérience permet d'aider de diriger au mieux le projet. Notamment pour pouvoir déployer le site automatiquement et permettre à l'équipe de tester en local et sur le serveur web de l'iut. 
+
 
 # Comment avez-vous organisé le travail au sein de votre équipe pour respecter la date de rendu du projet ?
 
@@ -21,3 +22,5 @@ On a eu quelques problèmes lors de lancement de la partie web pour le projet. O
 Ce qui a pu nous causer quelques problèmes de manque de motivation lors du développement du projet.
 
 # Comment auriez-vous pu améliorer le rendu de votre projet ?
+
+La partie UX du site aurait pu être améliorée si on avait passé plus de temps dessus. Certaines choses peuvent être compliquées pour l'utilisateur final du site. Un sujet plus précis aurait pu nous aider à développer plus de fonctionnalités précises. 
