@@ -20,7 +20,7 @@ Les tâches ont d'abord été analysées depuis le sujet et ensuite remises dans
 
 # Quelles sont les difficultés que vous avez rencontrées au sein de votre équipe ?
 
-On a eu quelques problèmes lors de lancement de la partie web pour le projet. On ne savait pas quelles tâches on devait faire pour commencer. Ce fut difficile d'analyser le sujet du projet pour obtenir des tâches faciles et compréhensibles de tous.
+On a eu quelques problèmes lors de lancement de la partie web pour le projet. On ne savait pas quelles tâches on devait faire pour commencer. Ce fut difficile d'analyser le sujet du projet pour en dégager des tâches faciles et compréhensibles de tous.
 
 Ce qui a pu nous causer quelques problèmes de manque de motivation lors du développement du projet.
 
