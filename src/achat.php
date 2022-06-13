@@ -105,7 +105,7 @@ if ($confirm){ ?>
           <h1>Achat confirmé</h1><br>
           Vous avez acheté avec succès <?php echo $product["name"]?> auprès de l'entreprise <?php echo $achat["name"] ?> pour <?php echo $achat['price'] ?>€.<br>
           <?php echo $montantCagnotte ?>€ ont été débités de votre cagnotte, nouveau solde : <?php echo $nouvelleCagnotte ?>€<br>
-          <?php echo $montant ?>€ ont été dabités de votre compte.<br>
+          <?php echo $montant ?>€ ont été débités de votre compte.<br>
           Vous recevrez votre commande très bientôt.<br><br>
           Merci pour votre achat.
       </body>
