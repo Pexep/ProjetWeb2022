@@ -50,7 +50,7 @@ if ($connected){
 }
 
 if (isset($_GET['company']) && $connected && $action){
-  $achat_req = $db->prepare("SELECT bs.product,bs.price,bs.business,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ? AND business = ?");
+  $achat_req = $db->prepare("SELECT bs.product,bs.price,bs.business,bs.quantity,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ? AND business = ?");
   $achat_req->execute(array($productID,$_GET['company']));
   $achat = $achat_req->fetch();
   if ($achat != false){
@@ -78,13 +78,36 @@ if(!$found){
 }
 
 if ($confirm){ ?>
+  <?php
+  $montant = $achat["price"];
+  $montantCagnotte = 0;
+  if (isset($_GET["utiliser_cagnotte"])){
+    if ($montant <= $user["coins"]){
+      $montantCagnotte = $montant;
+      $montant = 0;
+    }else{
+      $montantCagnotte = $user["coins"];
+      $montant -= $montantCagnotte;
+    }
+  }
+  $nouvelleCagnotte = $user["coins"]-$montantCagnotte;
+  $final_req = $db->prepare("UPDATE users SET coins = ? WHERE id = ? ; UPDATE businessSell SET quantity = ? WHERE business = ? AND product = ? ; INSERT INTO usersOrders (user,product,status) VALUES (?,?,"En préparation")");
+  $final_req->execute(array($nouvelleCagnotte,$userID,$achat["quantity"]-1,$achat["business"],$productID,$userID,$productID));
+  if ($achat["quantity"] == 1){
+    $del_product = $db->prepare("DELETE FROM businessSell WHERE quantity = 1 AND product = ? AND business = ?");
+    $del_product->execute(array($productID,$achat["business"]));
+  }
+  ?>
   <html>
       <?php include("includes/header.php"); ?>
       <body>
           <?php include("includes/navbar.php"); ?>
-          Achat confirmé
-
-
+          <h1>Achat confirmé</h1><br>
+          Vous avez acheté avec succès <?php echo $product["name"]?> auprès de l'entreprise <?php echo $achat["name"] ?> pour <?php echo $achat['price'] ?>€.<br>
+          <?php echo $montantCagnotte ?>€ ont été débités de votre cagnotte, nouveau solde : <?php echo $nouvelleCagnotte ?>€<br>
+          <?php echo $montant ?>€ ont été dabités de votre compte.<br>
+          Vous recevrez votre commande très bientôt.<br><br>
+          Merci pour votre achat.
       </body>
   </html>
 <?php
@@ -109,8 +132,8 @@ if ($confirm){ ?>
           <h3>Entreprise marchande:</h3>
             <?php echo $achat["name"] ?><br>
           <br>
-          <h3>Votre cagnotte:</h3><br>
-            <?php echo $user["coins"] ?>€
+          <h3>Votre cagnotte:</h3>
+            <?php echo $user["coins"] ?>€<br>
             Pour utiliser votre cagnotte pour cet achat veuillez cocher cette case <input type="checkbox" name="utiliser_cagnotte" form="finalisation"><br>
           <br>
           <input type="submit" value="Confirmer l'achat" form="finalisation">
