@@ -100,18 +100,18 @@ if ($confirm){ ?>
           </form>
           <h1>Achat de <?php echo $product["name"]?> - Finalisation</h1>
           <br>
-          <h3>Produit acheté:</h3><br>
+          <h3>Produit acheté:</h3>
             <?php echo $product["name"]?><br>
           <br>
-          <h3>Prix:</h3><br>
-            <?php echo $achat['price'] ?><br>
+          <h3>Prix:</h3>
+            <?php echo $achat['price'] ?>€<br>
           <br>
-          <h3>Entreprise marchande:</h3><br>
+          <h3>Entreprise marchande:</h3>
             <?php echo $achat["name"] ?><br>
           <br>
           <h3>Votre cagnotte:</h3><br>
-            <?php echo $user["coins"] ?>€<br>
-            Pour l'utiliser pour cet achat veuillez cocher cette case <input type="checkbox" name="utiliser_cagnotte" form="finalisation" checked><br>
+            <?php echo $user["coins"] ?>€
+            Pour utiliser votre cagnotte pour cet achat veuillez cocher cette case <input type="checkbox" name="utiliser_cagnotte" form="finalisation"><br>
           <br>
           <input type="submit" value="Confirmer l'achat" form="finalisation">
 
