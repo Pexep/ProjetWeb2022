@@ -110,7 +110,7 @@ if ($confirm){ ?>
             <?php echo $achat["name"] ?><br>
           <br>
           <h3>Votre cagnotte:</h3><br>
-            <?php echo $user["coin"] ?>€<br>
+            <?php echo $user["coins"] ?>€<br>
             Pour l'utiliser pour cet achat veuillez cocher cette case <input type="checkbox" name="utiliser_cagnotte" form="finalisation" checked><br>
           <br>
           <input type="submit" value="Confirmer l'achat" form="finalisation">
