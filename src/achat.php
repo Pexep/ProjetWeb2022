@@ -5,6 +5,18 @@ $found = false;
 $action = false;
 $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
 $final = false;
+$userFound = false;
+$confirm = false;
+
+if (isset($_SESSION["login"])){
+  $user_req = $db->prepare("SELECT * FROM users WHERE email = ?");
+  $user_req->execute(array($_SESSION["login"]));
+  $user = $user_req->fetch();
+  if($user != false){
+      $userFound = true;
+      $userID = $user["id"];
+  }
+}
 
 if(isset($_GET["id"])){
     $productID = $_GET["id"];
@@ -13,16 +25,12 @@ if(isset($_GET["id"])){
     $product = $prod_req->fetch();
     if($product != false){
         $found = true;
-
-        $details_req = $db->prepare("SELECT * from productsDetails WHERE product = ?");
-
-        $details_req->execute(array($productID));
     }
 
 }
 
 if($found){
-      $achat_req = $db->prepare("SELECT bs.product,bs.price,bs.business,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ?");
+      $achat_req = $db->prepare("SELECT bs.product,bs.business,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ?");
       $achat_req->execute(array($productID));
       $achat = $achat_req->fetch();
       if ($achat != false){
@@ -42,12 +50,16 @@ if ($connected){
 }
 
 if (isset($_GET['company']) && $connected && $action){
-  $achat_final_req = $db->prepare("SELECT bs.product,bs.price,bs.business,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ? AND business = ?");
-  $achat_final_req->execute(array($productID,$_GET['company']));
-  $achat_final = $achat_final_req->fetch();
-  if ($achat_final != false){
+  $achat_req = $db->prepare("SELECT bs.product,bs.price,bs.business,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ? AND business = ?");
+  $achat_req->execute(array($productID,$_GET['company']));
+  $achat = $achat_req->fetch();
+  if ($achat != false){
     $final = true;
   }
+}
+
+if (isset($_GET["confirm"]) && $final){
+  $confirm = true;
 }
 
 /* On change la description du site en fonction de si le produit a été trouvé ou non */
@@ -65,13 +77,47 @@ if(!$found){
     $description = $product["description"];
 }
 
+if ($confirm){ ?>
+  <html>
+      <?php include("includes/header.php"); ?>
+      <body>
+          <?php include("includes/navbar.php"); ?>
+          Achat confirmé
 
-if ($final){
 
-echo "finalisation";
+      </body>
+  </html>
+<?php
+}elseif ($final){ ?>
+  <html>
+      <?php include("includes/header.php"); ?>
+      <body>
+          <?php include("includes/navbar.php"); ?>
+          <form id="finalisation" method="get" action="">
+            <input name="id" type="hidden" value="<?php echo $productID ?>">
+            <input name="company" type="hidden" value="<?php echo $_GET["company"] ?>">
+            <input name="confirm" type="hidden" value="true">
+          </form>
+          <h1>Achat de <?php echo $product["name"]?> - Finalisation</h1>
+          <br>
+          <h3>Produit acheté:</h3><br>
+            <?php echo $product["name"]?><br>
+          <br>
+          <h3>Prix:</h3><br>
+            <?php echo $achat['price'] ?><br>
+          <br>
+          <h3>Entreprise marchande:</h3><br>
+            <?php echo $achat["name"] ?><br>
+          <br>
+          <h3>Votre cagnotte:</h3><br>
+            <?php echo $user["coin"] ?>€<br>
+            Pour l'utiliser pour cet achat veuillez cocher cette case <input type="checkbox" name="utiliser_cagnotte" form="finalisation" checked><br>
+          <br>
+          <input type="submit" value="Confirmer l'achat" form="finalisation">
 
-
-
+      </body>
+    </html>
+<?php
 }elseif($found && $connected && $action){ ?>
   <html>
       <?php include("includes/header.php"); ?>
@@ -92,6 +138,7 @@ echo "finalisation";
               <option value="<?php echo $entreprise['business']?>"><?php echo $entreprise['name']?></option>
             <?php } ?>
           </select>
+          <br>
           <br>
 
           <input type="submit" value="Continuer" form="comp-select">
