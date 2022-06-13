@@ -10,7 +10,9 @@ $description="Page d'accueil du site komposant.com";
     <?php include("includes/header.php") ?>
     <body>
         <?php include("includes/navbar.php"); ?>
-        <div class="w3-card-4">
+        <br>
+        <br>
+        <div class="w3-card-4 w3-center">
         	<img src="images/komposant_logo.png" alt="Logo Komposant">
         	<div class="w3-container">
         		<h2>Bienvenue sur notre site Komposant !</h2>
