@@ -41,10 +41,10 @@ if(isset($_SESSION["connected"]) && $_SESSION["connected"] == true){
         </form>
 
         <?php if (isset($_SESSION['loginerror'])){?>
-            <div class="w3-panel w3-crimson">
-            <span onclick="this.parentElement.style.display='none'" class="w3-button w3-right">X</span>
-            <h4><?php echo $_SESSION['loginerror']; ?></h4>
-        </div>
+            <div class="w3-panel w3-red">
+                <span onclick="this.parentElement.style.display='none'" class="w3-button w3-right">X</span> <!-- on crée un bouton qui, au clic, va fermer l'alerte -->
+                <h4><?php echo $_SESSION['loginerror']; ?></h4>
+            </div>
         <?php 
                 unset($_SESSION['loginerror']);
             } 

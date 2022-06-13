@@ -30,9 +30,10 @@ include("includes/before_headers.php");
         </form>
         
         <?php if (isset($_SESSION['registererror'])){?>
-        <div class="w3-panel w3-red">
-            <h4><?php echo $_SESSION['registererror']; ?></h4>
-        </div>
+            <div class="w3-panel w3-red">
+            <span onclick="this.parentElement.style.display='none'" class="w3-button w3-right">X</span> <!-- on crée un bouton qui, au clic, va fermer l'alerte -->
+                <h4><?php echo $_SESSION['registererror']; ?></h4>
+            </div>
         <?php 
                 unset($_SESSION['registererror']);
             } 
