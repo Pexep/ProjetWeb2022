@@ -21,7 +21,7 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
             header("Location: ../register.php");
         }
     } else {
-        $_SESSION['registererror'] = "Problèmes dans les champs, veuillez réessayer";
+        $_SESSION['registererror'] = "Problème(s) dans les champs, veuillez réessayer";
         header("Location: ../register.php");
     }
 
