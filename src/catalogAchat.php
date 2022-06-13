@@ -32,7 +32,6 @@ else {
                 <div class="w3-card-4">
                     <?php echo "<img src=\"".$cat["image"]."\" width=\"150\" height=\"150\">"; ?>
                     <?php echo "<a href='?categorie=".$cat["id"]."'>".$cat["title"]."</a><br>"; ?>
-
                 </div>
                 <?php
             }
