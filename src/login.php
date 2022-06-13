@@ -42,6 +42,7 @@ if(isset($_SESSION["connected"]) && $_SESSION["connected"] == true){
 
         <?php if (isset($_SESSION['loginerror'])){?>
         <div class="w3-panel w3-red">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright">X</span>
             <h4><?php echo $_SESSION['loginerror']; ?></h4>
         </div>
         <?php 
