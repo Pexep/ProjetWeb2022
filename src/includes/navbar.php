@@ -7,6 +7,7 @@ $path = urlencode($path);
 $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
 ?>
 <div class="w3-top">
+
     <div class="w3-bar w3-light-grey">
         <a href="index.php" class="w3-bar-item w3-button">Komposant</a>
         <a href="catalogAchat.php" class="w3-bar-item w3-button">Acheter</a>
@@ -29,7 +30,7 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
                     <a href="includes/logout.php" class="w3-bar-item w3-button">Déconnexion</a>
                 </div>
             </div>
-    
+
         <?php
         } else {
             echo '<a href="login.php?redirect_to=' . $path . '" class="w3-bar-item w3-button w3-right">Se connecter</a>';

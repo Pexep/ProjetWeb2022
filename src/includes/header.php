@@ -31,4 +31,5 @@ $url .= $_SERVER['REQUEST_URI'];
     <meta property="og:site_name" content="Komposant">
     <link rel="shortcut icon" href="images/komposant_logo.png" type="image/png">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
