@@ -24,7 +24,7 @@ $description="Page d'accueil du site komposant.com";
 
         <div class="w3-center">
         	<div class="w3-container">
-                <img src="images/economie_circulaire.jpg" alt="Economie Circulaire" class="w3-left w3-margin-right" >
+                <img src="images/economie_circulaire.jpg" alt="Economie Circulaire" class="w3-margin-right" >
         		<p>Notre objectif est de réduire l'impact environnemental de l'informatique. <br>Pour cela, nous appliquons une stratégie d'économie circulaire
                 <br>et collaborons avec nos partenaires, qui récupèrent les produits <br>que vous nous ramenez, afin d'en extraire leurs métaux précieux 
                 <br>qui vont par la suite être réutilisés pour créer de nouveaux produits !</p>
