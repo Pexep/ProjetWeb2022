@@ -86,6 +86,12 @@ if ($confirm) { ?>
         $del_product = $db->prepare("DELETE FROM businessBuy WHERE quantity = 1 AND product = ? AND business = ?");
         $del_product->execute(array($productID, $vente["business"]));
     }
+	$extract_req = $db->prepare("SELECT * FROM ExtractionFromTypeItem WHERE typeItem = ?");
+	$extract_req->execute(array($productID));
+	foreach ($extract_req->fetchAll() as $extract) {
+		$user_extract_req = $db->prepare("INSERT INTO usersExtractions (user,element, quantity) VALUES (?,?,?)");
+		$user_extract_req->execute(array($userID,$extract['element'],$extract['quantity']));
+	}
     ?>
     <html>
     <?php include("includes/header.php"); ?>
@@ -143,7 +149,7 @@ if ($confirm) { ?>
         </form>
         <label for="comp-select">Choisissez une entreprise:</label><br>
         <select name="company" id="comp-select" form="comp-select">
-            <option value="">--Selectionnez--</option>
+            <option>--Selectionnez--</option>
             <option value="<?php echo $vente['business'] ?>"><?php echo $vente['name'] ?></option>
             <?php
             foreach ($vente_req->fetchAll() as $entreprise) {
