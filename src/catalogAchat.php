@@ -20,7 +20,7 @@ if (isset($_GET["categorie"])) {
 
 <?php include("includes/header.php"); ?>
 
-<body>
+<body id="catalog">
     <?php include("includes/navbar.php"); ?>
 
     <h1>Nos produits disponibles à l'achat</h1>

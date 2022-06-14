@@ -1,6 +1,10 @@
 body{
     padding-top: 2em;
 }
-.w3-card-4{
+#catalog > .w3-card-4{
+    margin: 2em;
+}
+
+#catalog > a > .w3-card-4{
     margin: 2em;
 }
