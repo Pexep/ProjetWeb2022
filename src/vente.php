@@ -82,18 +82,18 @@ if ($confirm) { ?>
     <?php
     $montantCagnotte = $vente["price"];
     $nouvelleCagnotte = $user["coins"] + $montantCagnotte;
-    $final_req = $db->prepare("UPDATE users SET coins = ? WHERE id = ? ; UPDATE businessBuy SET quantity = ? WHERE business = ? AND product = ? ; INSERT INTO usersSales (user,product,price,status) VALUES (?,?,?,?)");
-    $final_req->execute(array($nouvelleCagnotte, $userID, $vente["quantity"] - 1, $vente["business"], $productID, $userID, $productID, $montantCagnotte, "En attente"));
-    if ($vente["quantity"] == 1) {
-        $del_product = $db->prepare("DELETE FROM businessBuy WHERE quantity = 1 AND product = ? AND business = ?");
-        $del_product->execute(array($productID, $vente["business"]));
-    }
 	$extract_req = $db->prepare("SELECT * FROM ExtractionFromTypeItem WHERE typeItem = ?");
 	$extract_req->execute(array($productID));
-	// foreach ($extract_req->fetchAll() as $extract) {
-	// 	$user_extract_req = $db->prepare("INSERT INTO usersExtractions (user,element, quantity) VALUES (?,?,?)");
-	// 	$user_extract_req->execute(array($userID,$extract['element'],$extract['quantity']));
-	// }
+	foreach ($extract_req->fetchAll() as $extract) {
+		$user_extract_req = $db->prepare("INSERT INTO usersExtractions (user,element, quantity) VALUES (?,?,?)");
+		$user_extract_req->execute(array($userID,$extract['element'],$extract['quantity']));
+	}
+	$final_req = $db->prepare("UPDATE users SET coins = ? WHERE id = ? ; UPDATE businessBuy SET quantity = ? WHERE business = ? AND product = ? ; INSERT INTO usersSales (user,product,price,status) VALUES (?,?,?,?)");
+	$final_req->execute(array($nouvelleCagnotte, $userID, $vente["quantity"] - 1, $vente["business"], $productID, $userID, $productID, $montantCagnotte, "En attente"));
+	if ($vente["quantity"] == 1) {
+		$del_product = $db->prepare("DELETE FROM businessBuy WHERE quantity = 1 AND product = ? AND business = ?");
+		$del_product->execute(array($productID, $vente["business"]));
+	}
     ?>
     <html>
     <?php include("includes/header.php"); ?>
