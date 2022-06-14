@@ -12,14 +12,14 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
         <a href="index.php" class="w3-bar-item w3-button">Komposant</a>
         <a href="catalogAchat.php" class="w3-bar-item w3-button">Acheter</a>
         <a href="catalogVente.php" class="w3-bar-item w3-button">Vendre</a>
-        <div class="w3-dropdown-hover">
+        <!-- <div class="w3-dropdown-hover">
             <button class="w3-button">À propos</button>
             <div class="w3-dropdown-content w3-bar-block w3-card-4">
                 <a href="team.php" class="w3-bar-item w3-button">Notre équipe</a>
                 <a href="partners.php" class="w3-bar-item w3-button">Nos partenaires</a>
                 <a href="#" class="w3-bar-item w3-button">Link 3</a>
             </div>
-        </div>
+        </div> -->
         <?php
         if ($connected) {
         ?>
