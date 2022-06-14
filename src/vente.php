@@ -1,6 +1,6 @@
 <?php
 include("includes/before_headers.php");
-
+$db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
 $found = false;
 $action = false;
 $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
