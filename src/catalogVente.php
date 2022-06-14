@@ -7,7 +7,7 @@ $display_categories = true;
 
 if (isset($_GET["categorie"])) {
     $display_categories = false;
-    $products = $db->prepare("SELECT p.id, p.name, p.image from products p INNER JOIN businessBuy b ON p.id=b.product WHERE category = ?");
+    $products = $db->prepare("SELECT DISTINCT p.id, p.name, p.image from products p INNER JOIN businessBuy b ON p.id=b.product WHERE category = ?");
     $products->execute(array($_GET["categorie"]));
 } else {
     $list_cat = $db->prepare("SELECT * from categories WHERE id IN (SELECT p.category from products p INNER JOIN businessBuy b ON p.id=b.product)");

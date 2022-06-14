@@ -1,6 +1,6 @@
 <?php
 include("includes/before_headers.php");
-
+$db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
 $found = false;
 $action = false;
 $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
@@ -49,11 +49,13 @@ if ($connected) {
 }
 
 if (isset($_GET['company']) && $connected && $action) {
-    $vente_req = $db->prepare("SELECT bs.product,bs.price,bs.business,bs.quantity,b.name FROM businessBuy bs INNER JOIN Business b ON bs.business=b.id WHERE product = ? AND business = ?");
-    $vente_req->execute(array($productID, $_GET['company']));
-    $vente = $vente_req->fetch();
-    if ($vente != false) {
+    $vente_final_req = $db->prepare("SELECT bs.product,bs.price,bs.business,bs.quantity,b.name FROM businessBuy bs INNER JOIN Business b ON bs.business=b.id WHERE product = ? AND business = ?");
+    $vente_final_req->execute(array($productID, $_GET['company']));
+    $vente_final = $vente_final_req->fetch();
+    if ($vente_final != false) {
         $final = true;
+		$vente = $vente_final;
+		$vente_req = $vente_final_req;
     }
 }
 
@@ -80,12 +82,22 @@ if ($confirm) { ?>
     <?php
     $montantCagnotte = $vente["price"];
     $nouvelleCagnotte = $user["coins"] + $montantCagnotte;
-    $final_req = $db->prepare("UPDATE users SET coins = ? WHERE id = ? ; UPDATE businessBuy SET quantity = ? WHERE business = ? AND product = ? ; INSERT INTO usersSales (user,product,price,status) VALUES (?,?,?,?)");
-    $final_req->execute(array($nouvelleCagnotte, $userID, $vente["quantity"] - 1, $vente["business"], $productID, $userID, $productID, $montantCagnotte, "En attente"));
-    if ($vente["quantity"] == 1) {
-        $del_product = $db->prepare("DELETE FROM businessBuy WHERE quantity = 1 AND product = ? AND business = ?");
-        $del_product->execute(array($productID, $vente["business"]));
-    }
+	$extract_req = $db->prepare("SELECT * FROM ExtractionFromTypeItem WHERE typeItem = ?");
+	$extract_req->execute(array($productID));
+	foreach ($extract_req->fetchAll() as $extract) {
+		$user_extract_req = $db->prepare("INSERT INTO usersExtractions (user,element, quantity) VALUES (?,?,?)");
+		$user_extract_req->execute(array($userID,$extract['element'],$extract['quantity']));
+	}
+	$update_coins_req = $db->prepare("UPDATE users SET coins = ? WHERE id = ?");
+	$update_coins_req->execute(array($nouvelleCagnotte, $userID));
+	$update_stock_req = $db->prepare("UPDATE businessBuy SET quantity = ? WHERE business = ? AND product = ?");
+	$update_stock_req->execute(array($vente["quantity"] - 1, $vente["business"], $productID));
+	$update_ventes_req = $db->prepare("INSERT INTO usersSales (user,product,price,status) VALUES (?,?,?,?)");
+	$update_ventes_req->execute(array($userID, $productID, $montantCagnotte, 'En attente'));
+	if ($vente["quantity"] <= 1) {
+		$del_product = $db->prepare("DELETE FROM businessBuy WHERE quantity = ? AND product = ? AND business = ?");
+		$del_product->execute(array($vente['quantity']-1,$productID, $vente["business"]));
+	}
     ?>
     <html>
     <?php include("includes/header.php"); ?>
@@ -143,7 +155,7 @@ if ($confirm) { ?>
         </form>
         <label for="comp-select">Choisissez une entreprise:</label><br>
         <select name="company" id="comp-select" form="comp-select">
-            <option value="">--Selectionnez--</option>
+            <option value="0">--Selectionnez--</option>
             <option value="<?php echo $vente['business'] ?>"><?php echo $vente['name'] ?></option>
             <?php
             foreach ($vente_req->fetchAll() as $entreprise) {

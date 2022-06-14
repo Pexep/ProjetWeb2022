@@ -49,11 +49,13 @@ if ($connected) {
 }
 
 if (isset($_GET['company']) && $connected && $action) {
-    $achat_req = $db->prepare("SELECT bs.product,bs.price,bs.business,bs.quantity,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ? AND business = ?");
-    $achat_req->execute(array($productID, $_GET['company']));
-    $achat = $achat_req->fetch();
-    if ($achat != false) {
+    $achat_final_req = $db->prepare("SELECT bs.product,bs.price,bs.business,bs.quantity,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ? AND business = ?");
+    $achat_final_req->execute(array($productID, $_GET['company']));
+    $achat_final = $achat_final_req->fetch();
+    if ($achat_final != false) {
         $final = true;
+		$achat = $achat_final;
+		$achat_req = $achat_final_req;
     }
 }
 
@@ -90,9 +92,13 @@ if ($confirm) { ?>
         }
     }
     $nouvelleCagnotte = $user["coins"] - $montantCagnotte;
-    $final_req = $db->prepare("UPDATE users SET coins = ? WHERE id = ? ; UPDATE businessSell SET quantity = ? WHERE business = ? AND product = ? ; INSERT INTO usersOrders (user,product,status) VALUES (?,?,?)");
-    $final_req->execute(array($nouvelleCagnotte, $userID, $achat["quantity"] - 1, $achat["business"], $productID, $userID, $productID, "En préparation"));
-    if ($achat["quantity"] == 1) {
+    $update_coins_req = $db->prepare("UPDATE users SET coins = ? WHERE id = ? ");
+    $update_coins_req->execute(array($nouvelleCagnotte, $userID));
+	$update_stock_req = $db->prepare("UPDATE businessSell SET quantity = ? WHERE business = ? AND product = ?");
+    $update_stock_req->execute(array($achat["quantity"] - 1, $achat["business"], $productID));
+	$update_achats_req = $db->prepare("INSERT INTO usersOrders (user,product,status) VALUES (?,?,?)");
+    $update_achats_req->execute(array($userID, $productID, "En préparation"));
+    if ($achat["quantity"] <= 1) {
         $del_product = $db->prepare("DELETE FROM businessSell WHERE quantity = 1 AND product = ? AND business = ?");
         $del_product->execute(array($productID, $achat["business"]));
     }
@@ -157,7 +163,7 @@ if ($confirm) { ?>
         </form>
         <label for="comp-select">Choisissez une entreprise:</label><br>
         <select name="company" id="comp-select" form="comp-select">
-            <option value="">--Selectionnez--</option>
+            <option value="0">--Selectionnez--</option>
             <option value="<?php echo $achat['business'] ?>"><?php echo $achat['name'] ?></option>
             <?php
             foreach ($achat_req->fetchAll() as $entreprise) {
