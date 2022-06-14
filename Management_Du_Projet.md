@@ -31,3 +31,5 @@ La partie UX (User Experience) du site aurait pu être améliorée si nous avion
 Nous aurions également pu améliorer d'autres parties avec un sujet plus élaboré.
 
 Nous aurions aimé passer plus de temps sur ce projet, mais la fin de l'année arrivait, et nous ne nous attendions pas à avoir autant de choses à faire en parallèle, que ce soit pour les cours et les révisions ou pour la préparation de l'année prochaine avec les démarches d'alternance à entreprendre, entre autres.
+
+On aurait pu aussi améliorer l'affiche en ajoutant plus de détails pour aider à la compréhension du fonctionnement du site. Par exemple, expliquer comment on recycle l'appareil du prospect, qui sont nos partenaires, comment envoyer un téléphone pour le faire recycler...
