@@ -92,9 +92,13 @@ if ($confirm) { ?>
         }
     }
     $nouvelleCagnotte = $user["coins"] - $montantCagnotte;
-    $final_req = $db->prepare("UPDATE users SET coins = ? WHERE id = ? ; UPDATE businessSell SET quantity = ? WHERE business = ? AND product = ? ; INSERT INTO usersOrders (user,product,status) VALUES (?,?,?)");
-    $final_req->execute(array($nouvelleCagnotte, $userID, $achat["quantity"] - 1, $achat["business"], $productID, $userID, $productID, "En préparation"));
-    if ($achat["quantity"] == 1) {
+    $update_coins_req = $db->prepare("UPDATE users SET coins = ? WHERE id = ? ");
+    $update_coins_req->execute(array($nouvelleCagnotte, $userID));
+	$update_stock_req = $db->prepare("UPDATE businessSell SET quantity = ? WHERE business = ? AND product = ?");
+    $update_stock_req->execute(array($achat["quantity"] - 1, $achat["business"], $productID));
+	$update_achats_req = $db->prepare("INSERT INTO usersOrders (user,product,status) VALUES (?,?,?)");
+    $update_achats_req->execute(array($userID, $productID, "En préparation"));
+    if ($achat["quantity"] <= 1) {
         $del_product = $db->prepare("DELETE FROM businessSell WHERE quantity = 1 AND product = ? AND business = ?");
         $del_product->execute(array($productID, $achat["business"]));
     }

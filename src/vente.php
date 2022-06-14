@@ -88,12 +88,12 @@ if ($confirm) { ?>
 		$user_extract_req = $db->prepare("INSERT INTO usersExtractions (user,element, quantity) VALUES (?,?,?)");
 		$user_extract_req->execute(array($userID,$extract['element'],$extract['quantity']));
 	}
-	$final1_req = $db->prepare("UPDATE users SET coins = ? WHERE id = ?");
-	$final1_req->execute(array($nouvelleCagnotte, $userID));
-	$final2_req = $db->prepare("UPDATE businessBuy SET quantity = ? WHERE business = ? AND product = ?");
-	$final2_req->execute(array($vente["quantity"] - 1, $vente["business"], $productID));
-	$final3_req = $db->prepare("INSERT INTO usersSales (user,product,price,status) VALUES (?,?,?,?)");
-	$final3_req->execute(array($userID, $productID, $montantCagnotte, 'En attente'));
+	$update_coins_req = $db->prepare("UPDATE users SET coins = ? WHERE id = ?");
+	$update_coins_req->execute(array($nouvelleCagnotte, $userID));
+	$update_stock_req = $db->prepare("UPDATE businessBuy SET quantity = ? WHERE business = ? AND product = ?");
+	$update_stock_req->execute(array($vente["quantity"] - 1, $vente["business"], $productID));
+	$update_ventes_req = $db->prepare("INSERT INTO usersSales (user,product,price,status) VALUES (?,?,?,?)");
+	$update_ventes_req->execute(array($userID, $productID, $montantCagnotte, 'En attente'));
 	if ($vente["quantity"] <= 1) {
 		$del_product = $db->prepare("DELETE FROM businessBuy WHERE quantity = ? AND product = ? AND business = ?");
 		$del_product->execute(array($vente['quantity']-1,$productID, $vente["business"]));
