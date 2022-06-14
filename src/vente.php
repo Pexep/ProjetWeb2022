@@ -149,7 +149,7 @@ if ($confirm) { ?>
         </form>
         <label for="comp-select">Choisissez une entreprise:</label><br>
         <select name="company" id="comp-select" form="comp-select">
-            <option>--Selectionnez--</option>
+            <option value="0">--Selectionnez--</option>
             <option value="<?php echo $vente['business'] ?>"><?php echo $vente['name'] ?></option>
             <?php
             foreach ($vente_req->fetchAll() as $entreprise) {
