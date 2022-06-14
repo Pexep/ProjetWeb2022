@@ -90,6 +90,7 @@ if ($confirm) { ?>
 	}
 	$final_req = $db->prepare("UPDATE users SET coins = ? WHERE id = ? ; UPDATE businessBuy SET quantity = ? WHERE business = ? AND product = ? ; INSERT INTO usersSales (user,product,price,status) VALUES (?,?,?,?)");
 	$final_req->execute(array($nouvelleCagnotte, $userID, $vente["quantity"] - 1, $vente["business"], $productID, $userID, $productID, $montantCagnotte, 'En attente'));
+	$trash = $final_req->fetchAll();
 	if ($vente["quantity"] <= 1) {
 		$del_product = $db->prepare("DELETE FROM businessBuy WHERE quantity = ? AND product = ? AND business = ?");
 		$del_product->execute(array($vente['quantity']-1,$productID, $vente["business"]));
