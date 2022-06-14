@@ -20,6 +20,9 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
             $_SESSION['registererror'] = "Adresse mail déjà utilisée";
             header("Location: ../register.php");
         }
+    } else {
+        $_SESSION['registererror'] = "Problème(s) dans les champs, veuillez réessayer";
+        header("Location: ../register.php");
     }
 
     if($insertion_possible){

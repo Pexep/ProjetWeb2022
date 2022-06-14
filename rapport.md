@@ -10,7 +10,10 @@
 - Conclusion globlale
 
 # Introduction
-...
+
+Le but de la SAÉ est de créer un site web permettant à un utilisateur d'acheter du matériel informatique et d'en revendre à des entreprises spécialisées dans le recyclage. 
+
+L'utilisateur doit pouvoir voir sa cagnotte, ainsi que les matériaux qu'il a permis de recycler. Il peut aussi parcourir le site pour acheter et revendre du matériel.
 
 # Organisation
 
@@ -36,7 +39,7 @@ Pour le déploiement nous avons décidé d'utiliser Gitlab, plus précisement la
 
 Dans notre cas, nous avons une pipeline qui vient compresser le dossier `src/` qui contient les fichiers sources du site. Puis une autre qui va envoyer ce fichier zip sur iluvatar et le décompresser ensuite dans notre dossier `public_html`.
 
-On pourrait mettre en place des tests qui seront exécutés dans le premier pipeline pour vérifier que les fichiers .php ont une syntaxe valide.
+On pourrait mettre en place des tests qui seront exécutés dans le premier pipeline pour vérifier que les fichiers .php ont une syntaxe valide et qu'ils contiennent bien des valeurs que l'on doit pouvoir retrouver pendant le fonctionnement normal du site.
 
 ### Branches autres que master
 
