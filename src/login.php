@@ -23,9 +23,9 @@ if(isset($_SESSION["connected"]) && $_SESSION["connected"] == true){
     <?php include("includes/header.php"); ?>
 
     <body>
-        
+
         <?php include("includes/navbar.php"); ?>
-    
+
         <form action="includes/login.php" method="post" class="w3-container w3-card">
             <h2>Se connecter</h2>
             <label>Adresse mail</label>
@@ -36,7 +36,7 @@ if(isset($_SESSION["connected"]) && $_SESSION["connected"] == true){
             <!--<input type="checkbox" name="stayconnected" id="stayconnected" class="w3-check">-->
             <br>
             <input type="submit" value="Login" class="w3-button w3-green">
-    
+
             <p>Vous n'avez pas de compte ? <a href="register.php">s'enregistrer</a></p>
         </form>
 
@@ -47,7 +47,7 @@ if(isset($_SESSION["connected"]) && $_SESSION["connected"] == true){
             </div>
         <?php 
                 unset($_SESSION['loginerror']);
-            } 
+            }
         ?>
 
     </body>
