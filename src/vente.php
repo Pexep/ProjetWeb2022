@@ -90,7 +90,11 @@ if ($confirm) { ?>
     }
 	$extract_req = $db->prepare("SELECT * FROM ExtractionFromTypeItem WHERE typeItem = ?");
 	$extract_req->execute(array($productID));
-	foreach ($extract_req->fetchAll() as $extract) {
+	// foreach ($extract_req->fetchAll() as $extract) {
+	// 	$user_extract_req = $db->prepare("INSERT INTO usersExtractions (user,element, quantity) VALUES (?,?,?)");
+	// 	$user_extract_req->execute(array($userID,$extract['element'],$extract['quantity']));
+	// }
+	while ($extract = $extract_req->fetch()){
 		$user_extract_req = $db->prepare("INSERT INTO usersExtractions (user,element, quantity) VALUES (?,?,?)");
 		$user_extract_req->execute(array($userID,$extract['element'],$extract['quantity']));
 	}
