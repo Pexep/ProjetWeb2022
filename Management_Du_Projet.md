@@ -26,9 +26,9 @@ Nous avons aussi rencontré une difficulté pour la soutenance du projet web où
 
 # Comment auriez-vous pu améliorer le rendu de votre projet ?
 
-La partie UX (User Experience) du site aurait pu être améliorée si nous avions passé plus de temps dessus, ce qui fait que certaines choses peuvent être compliquées pour l'utilisateur final du site. Un sujet plus précis aurait pu nous aider à développer plus de fonctionnalités précises.
+La partie UX (User Experience) du site aurait pu être améliorée si nous avions passé plus de temps dessus, ce qui fait que certaines choses peuvent être compliquées pour l'utilisateur final du site. Un sujet plus précis aurait pu nous aider à développer plus de fonctionnalités précises mais aussi améliorer certaines parties.
 
-Nous aurions également pu améliorer d'autres parties avec un sujet plus élaboré.
+
 
 Nous aurions aimé passer plus de temps sur ce projet, mais la fin de l'année arrivait, et nous ne nous attendions pas à avoir autant de choses à faire en parallèle, que ce soit pour les cours et les révisions ou pour la préparation de l'année prochaine avec les démarches d'alternance à entreprendre, entre autres.
 
