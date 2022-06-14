@@ -49,11 +49,13 @@ if ($connected) {
 }
 
 if (isset($_GET['company']) && $connected && $action) {
-    $achat_req = $db->prepare("SELECT bs.product,bs.price,bs.business,bs.quantity,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ? AND business = ?");
-    $achat_req->execute(array($productID, $_GET['company']));
-    $achat = $achat_req->fetch();
-    if ($achat != false) {
+    $achat_final_req = $db->prepare("SELECT bs.product,bs.price,bs.business,bs.quantity,b.name FROM businessSell bs INNER JOIN Business b ON bs.business=b.id WHERE product = ? AND business = ?");
+    $achat_final_req->execute(array($productID, $_GET['company']));
+    $achat_final = $achat_final_req->fetch();
+    if ($achat_final != false) {
         $final = true;
+		$achat = $achat_final;
+		$achat_req = $achat_final_req;
     }
 }
 
