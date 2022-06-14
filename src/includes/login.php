@@ -54,5 +54,3 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
     $_SESSION['loginerror']="Champs vides";
     header('Location: ../login.php');
 }
-
-?>
