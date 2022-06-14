@@ -94,10 +94,6 @@ if ($confirm) { ?>
 	// 	$user_extract_req = $db->prepare("INSERT INTO usersExtractions (user,element, quantity) VALUES (?,?,?)");
 	// 	$user_extract_req->execute(array($userID,$extract['element'],$extract['quantity']));
 	// }
-	while ($extract = $extract_req->fetch()){
-		$user_extract_req = $db->prepare("INSERT INTO usersExtractions (user,element, quantity) VALUES (?,?,?)");
-		$user_extract_req->execute(array($userID,$extract['element'],$extract['quantity']));
-	}
     ?>
     <html>
     <?php include("includes/header.php"); ?>
