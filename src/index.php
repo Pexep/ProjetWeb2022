@@ -20,7 +20,7 @@ $description="Page d'accueil du site komposant.com";
         	</div>
         </div>
         
-        <br>
+        <br><br>
 
         <div class="w3-center">
         	<div class="w3-container">
@@ -29,6 +29,12 @@ $description="Page d'accueil du site komposant.com";
                 <br>qui vont par la suite être réutilisés pour créer de nouveaux produits !</p>
         	</div>
             <img src="images/economie_circulaire.jpg" alt="Economie Circulaire" width="600" height="350">
+        </div>
+
+        <br><br>
+
+        <div class="w3-container w3-center">
+        	<p>Pour faire face à la pénurie actuelle des composants informatiques et pour leur permettre une deuxième vie, rejoignez nous ! </p>
         </div>
 
 
