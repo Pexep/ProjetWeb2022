@@ -6,8 +6,8 @@ $description = "Nos produits disponibles à l'achat sur notre site";
 $display_categories = true;
 
 if(isset($_GET["categorie"])){
-    $display_categories = false;
-    $products = $db->prepare("SELECT p.id, p.name, p.image from products p INNER JOIN businessSell b ON p.id=b.product WHERE category = ?");
+	$display_categories = false;
+    $products = $db->prepare("SELECT DISTINCT p.id, p.name, p.image from products p INNER JOIN businessSell b ON p.id=b.product WHERE category = ?");
     $products->execute(array($_GET["categorie"]));
 }
 else {
@@ -32,6 +32,7 @@ else {
                 <div class="w3-card-4">
                     <?php echo "<img src=\"".$cat["image"]."\" width=\"150\" height=\"150\">"; ?>
                     <?php echo "<a href='?categorie=".$cat["id"]."'>".$cat["title"]."</a><br>"; ?>
+
                 </div>
                 <?php
             }

@@ -6,21 +6,22 @@ $path = $_SERVER['REQUEST_URI'];
 $path = urlencode($path);
 $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
 ?>
+<div class="w3-top">
 
-<div class="w3-bar w3-light-grey">
-    <a href="index.php" class="w3-bar-item w3-button">Komposant</a>
-    <a href="catalogAchat.php" class="w3-bar-item w3-button">Acheter</a>
-    <a href="catalogVente.php" class="w3-bar-item w3-button">Vendre</a>
-    <div class="w3-dropdown-hover">
-    <button class="w3-button">À propos</button>
-        <div class="w3-dropdown-content w3-bar-block w3-card-4">
-            <a href="team.php" class="w3-bar-item w3-button">Notre équipe</a>
-            <a href="partners.php" class="w3-bar-item w3-button">Nos partenaires</a>
-            <a href="#" class="w3-bar-item w3-button">Link 3</a>
+    <div class="w3-bar w3-light-grey">
+        <a href="index.php" class="w3-bar-item w3-button">Komposant</a>
+        <a href="catalogAchat.php" class="w3-bar-item w3-button">Acheter</a>
+        <a href="catalogVente.php" class="w3-bar-item w3-button">Vendre</a>
+        <div class="w3-dropdown-hover">
+            <button class="w3-button">À propos</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="team.php" class="w3-bar-item w3-button">Notre équipe</a>
+                <a href="partners.php" class="w3-bar-item w3-button">Nos partenaires</a>
+                <a href="#" class="w3-bar-item w3-button">Link 3</a>
+            </div>
         </div>
-    </div>
-    <?php
-    if($connected){
+        <?php
+        if ($connected) {
         ?>
             <div class="w3-dropdown-hover w3-right">
                 <a class="w3-button" href="infoUser.php"><?php echo $_SESSION["fullname"]; ?></a>
@@ -31,9 +32,9 @@ $connected = isset($_SESSION['connected']) && $_SESSION['connected'] == true;
             </div>
 
         <?php
-    }
-    else{
-        echo '<a href="login.php?redirect_to='.$path.'" class="w3-bar-item w3-button w3-right">Se connecter</a>';
-    }
-    ?>
+        } else {
+            echo '<a href="login.php?redirect_to=' . $path . '" class="w3-bar-item w3-button w3-right">Se connecter</a>';
+        }
+        ?>
+    </div>
 </div>

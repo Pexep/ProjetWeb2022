@@ -14,7 +14,7 @@ $description="Page d'accueil du site komposant.com";
         <br>
         
         <div class="w3-center">
-        	<img src="images/komposant_logo.png" alt="Logo Komposant" width="80%" height="80%">
+        	<img src="images/komposant_logo.png" alt="Logo Komposant" width="400" height="400">
         	<div class="w3-container">
         		<h2>Bienvenue sur notre site Komposant !</h2>
         	</div>
