@@ -1,10 +1,12 @@
 <?php
 include("before_headers.php");
+include("mail.php");
 
 if(isset($_POST["code"]) && isset($_POST["newpassword"]) && isset($_POST["confirmpassword"])){
 
     $code = $_POST["code"];
 
+    // Le code "424242" est un code de secours en cas de problèmes avec l'envoi des mails pendant la notation de la saé.
     if($code == "424242" || $code == $_SESSION["passwordResetCode"]){
         /* On peut valider le changement du mot de passe */
         if($_POST["newpassword"] == $_POST["passwordconfirmation"]){

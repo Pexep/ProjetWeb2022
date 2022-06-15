@@ -35,12 +35,8 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
             'email' => $_POST['email'],
             'firstname' => $_POST['prenom'],
             'lastname' => $_POST['nom'],
-            'verificationCode' => substr(md5(uniqid(rand(), true)), 0, 8)
+            'verificationCode' => substr(md5(uniqid(rand(), true)), 0, 8) // génération d'un code aléatoire de 8 caractères pour la vérification de l'email
         ));
-
-        /*
-            todo: mettre en place la vérification de l'adresse mail de l'utilisateur
-        */
 
         /* Redirection vers la page de login */
         // Mettre un message custom ici pour prévenir l'utilisateur qu'il doit vérifier ses mails
