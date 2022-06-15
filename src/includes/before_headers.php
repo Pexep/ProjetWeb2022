@@ -5,7 +5,7 @@ session_start();
 
 if(isset($_SESSION['connected'])){
     /*
-        To do: vérifier si les identifiants sont encore valides
+        Vérification si les identifiants sont encore valides
     */
 
     if(isset($_SESSION["password"])){

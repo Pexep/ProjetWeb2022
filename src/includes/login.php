@@ -26,8 +26,7 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
         $_SESSION['password'] = $result['password']; // On stocke le hash dans la session pour vérifier si l'utilisateur ne change pas de mot de passe entre temps
         $_SESSION['fullname'] = $result['firstname'] . " " . $result['lastname'];
 
-
-        /** Redirection à la page où le client était */
+        /* Redirection à la page où le client était */
         if(isset($_SESSION['redirect_to'])){
             $redirect_to = $_SESSION['redirect_to'];
             unset($_SESSION['redirect_to']);
@@ -41,7 +40,6 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
         /* Todo: rediriger à la page de login avec un message mauvais mot de passe */
         $_SESSION['loginerror']="Mauvaise adresse mail ou mot de passe";
         header("Location: ../login.php");
-
     }
 } else {
     /* Aucun champ n'a été rempli on demande à l'utilisateur de recommencer en le redirigeant sur la page de login*/
