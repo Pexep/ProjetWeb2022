@@ -4,4 +4,5 @@
 // afin d'éviter des problèmes de sécurité
 
 Header("Location: ../");
+
 ?>
