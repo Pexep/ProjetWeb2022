@@ -16,6 +16,7 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
     if($result){ /* Si on trouve un compte dans la base de données avec le même mot de passe alors on continue la vérification */ 
         if(password_verify($_POST['password'], $result['password'])){
             $connexion_valide = true;
+            // On peut vérifier ici si l'utilisateur a bien vérifié son email
         }
     }
 
