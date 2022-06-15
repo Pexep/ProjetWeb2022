@@ -23,15 +23,9 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
         /* On ajoute les détails de connexion dans la session de l'utilisateur */
         $_SESSION['connected'] = true;
         $_SESSION['login'] = $result['email'];
-        $_SESSION['password'] = $password;
+        $_SESSION['password'] = $result['password']; // On stocke le hash dans la session pour vérifier si l'utilisateur ne change pas de mot de passe entre temps
         $_SESSION['fullname'] = $result['firstname'] . " " . $result['lastname'];
 
-        /* Ajout des cookies pour rester connecté (pour l'instant on ne les utilise pas) */
-        if (isset($_POST['stayconnected']) && $_POST['stayconnected'] == "on") {
-            setcookie('adresseavoler', $result['email'], time()+60*60*24*30);
-            setcookie('mdpavoler', $password, time()+60*60*24*30);
-            print_r($_COOKIE);
-        }
 
         /** Redirection à la page où le client était */
         if(isset($_SESSION['redirect_to'])){
