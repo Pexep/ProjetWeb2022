@@ -36,7 +36,11 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
             'firstname' => $_POST['prenom'],
             'lastname' => $_POST['nom']
         ));
-        
+
+        /*
+            todo: mettre en place la vérification de l'adresse mail de l'utilisateur
+        */
+
         /* Redirection vers la page de login */
         header("Location: ../login.php");
 

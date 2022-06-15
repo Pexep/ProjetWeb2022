@@ -29,9 +29,9 @@ $description = "Page pour réinitialiser votre mot de passe sur le site komposan
             <label for="">Code de confirmation</label>
             <input type="text" placeholder="Code de confirmation reçu par mail" name="validationCode" class="w3-input">
             <label for="">Nouveau mot de passe</label>
-            <input type="password" name="password" id="" placeholder="Nouveau mot de passe" class="w3-input">
+            <input type="password" name="newpassword" id="" placeholder="Nouveau mot de passe" class="w3-input">
             <label for="">Confirmation du nouveau mot de passe</label>
-            <input type="password" name="passwordConfirmation" id="" class="w3-input" placeholder="Confirmation de votre mot de passe"><br>
+            <input type="password" name="passwordconfirmation" id="" class="w3-input" placeholder="Confirmation de votre mot de passe"><br>
             <input type="submit" value="Envoyer" class="w3-button w3-green">
         </form>
         <?php } ?>
