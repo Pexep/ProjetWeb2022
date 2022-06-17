@@ -23,6 +23,8 @@ if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_
     if(strcmp($_POST['newpassword'], $_POST['checknewpassword']) === 0 && password_verify($_POST['actualpassword'], $pwd)){
         $changement_valide = true;
         // si toutes les conditions sont réunies, on peut changer le mdp dans la BD
+    } else {
+        echo "stinky";
     }
 
 
@@ -50,10 +52,10 @@ if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_
     } else {
         /* Todo: rediriger à la page de login avec un message mauvais mot de passe */
         $_SESSION['passwordchangeerror']="Erreur dans la saisie des mots de passe<br/>Mot de passe oublié: <a href='../forgotPassword.php'>Cliquez ici pour le changer par mail</a>";
-        header("Location: ../changePassword.php");
+        //header("Location: ../changePassword.php");
     }
 } else {
-    /* Aucun champ n'a été rempli on demande à l'utilisateur de recommencer en le redirigeant sur la page de login*/
+    /* Aucun champ n'a été rempli on demande à l'utilisateur de recommencer en le redirigeant*/
     $_SESSION['passwordchangeerror']="Champs vides";
-    header('Location: ../changePassword.php');
+    //header('Location: ../changePassword.php');
 }
