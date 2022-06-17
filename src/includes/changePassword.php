@@ -24,6 +24,13 @@ if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_
 
     if($changement_valide){
         
+        /* on change le mdp dans la bd */
+        $req2 = $db->prepare("UPDATE users SET password = :password WHERE email = :email");
+            $req2->execute(array(
+                "password" => password_hash($_POST["newpassword"], PASSWORD_BCRYPT),
+                "email" => $login
+            ));
+
         /* Redirection à la page où le client était */
         if(isset($_SESSION['redirect_to'])){
             $redirect_to = $_SESSION['redirect_to'];
@@ -34,12 +41,7 @@ if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_
             header('Location: ../index.php');
         }
 
-        /* on change le mdp dans la bd */
-        $req2 = $db->prepare("UPDATE users SET password = :password WHERE email = :email");
-            $req2->execute(array(
-                "password" => password_hash($_POST["newpassword"], PASSWORD_BCRYPT),
-                "email" => $login
-            ));
+        
 
     } else {
         /* Todo: rediriger à la page de login avec un message mauvais mot de passe */

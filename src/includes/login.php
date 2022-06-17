@@ -39,7 +39,7 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
 
     } else {
         /* Todo: rediriger à la page de login avec un message mauvais mot de passe */
-        $_SESSION['loginerror']="Mauvaise adresse mail ou mot de passe<br/>Mot de passe oublié: <a href='../forgotPassword.php'>Cliquez ici pour le changer</a>";
+        $_SESSION['loginerror']="Mauvaise adresse mail ou mot de passe<br/>Mot de passe oublié: <a href='forgotPassword.php'>Cliquez ici pour le changer</a>";
         header("Location: ../login.php");
     }
 } else {
