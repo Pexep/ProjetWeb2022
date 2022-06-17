@@ -6,8 +6,6 @@ if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_
     
     $changement_valide = false;
 
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
     $login = $_SESSION['login'];
 
     $req = $db->prepare('SELECT password FROM users WHERE email = :login');
@@ -22,7 +20,7 @@ if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_
     echo "<br>";
     echo $login;
     
-    if(strcmp($_POST['newpassword'], $_POST['checknewpassword']) === 0 && password_verify($_POST['actualpassword'], $result['password'])){
+    if(strcmp($_POST['newpassword'], $_POST['checknewpassword']) === 0 && password_verify($_POST['actualpassword'], $pwd)){
         $changement_valide = true;
         // si toutes les conditions sont réunies, on peut changer le mdp dans la BD
     }
