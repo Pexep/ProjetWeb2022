@@ -40,6 +40,7 @@ if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']
 
         /* Redirection vers la page de login */
         // Mettre un message custom ici pour prévenir l'utilisateur qu'il doit vérifier ses mails
+        setAlert('success', 'login', 'Votre mot de passe a bien été modifé, vous pouvez désormais vous connecter');
         header("Location: ../login.php");
 
     }

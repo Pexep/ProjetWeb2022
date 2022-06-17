@@ -19,7 +19,7 @@ if(isset($_POST["email"]) && isset($_POST["newpassword"]) && isset($_POST["passw
                 "password" => password_hash($_POST["newpassword"], PASSWORD_BCRYPT),
                 "email" => $_POST["email"]
             ));
-            setAlert('sucess', 'login', 'Votre mot de passe a été modifié avec succès !');
+            setAlert('success', 'login', 'Votre mot de passe a été modifié avec succès !');
             header("Location: ../login.php");
         } else {
             /* Les mots de passe ne correspondent pas */
