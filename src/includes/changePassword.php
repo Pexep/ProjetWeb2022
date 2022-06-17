@@ -19,7 +19,7 @@ if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_
     
     if(strcmp($_POST['newpassword'], $_POST['checknewpassword']) === 0 && password_verify($_POST['actualpassword'], $pwd)){
         $changement_valide = true;
-        // si toutes les conditions sont réunies, on peut changer le mdp dans la BD
+        /* si toutes les conditions sont réunies, on peut changer le mdp dans la BD */
     }
 
     if($changement_valide){
