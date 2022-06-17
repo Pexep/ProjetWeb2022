@@ -31,15 +31,8 @@ if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_
                 "email" => $login
             ));
 
-        /* Redirection à la page où le client était */
-        if(isset($_SESSION['redirect_to'])){
-            $redirect_to = $_SESSION['redirect_to'];
-            unset($_SESSION['redirect_to']);
-            header('Location: '.$redirect_to);
-        }
-        else{
-            header('Location: ../index.php');
-        }
+        /* Redirection à la page d'accueil en déconnectant le client */
+        header('Location: logout.php');
 
         
 
