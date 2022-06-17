@@ -33,6 +33,9 @@ $userid = $result["id"];
         ?>
         <br>
     </div>
+    <div id="changementMotDePasse">
+        <p>Envie de changer votre mot de passe ?</p> <a href="changePassword.php">Cliquez ici !</a>
+    </div>
     <div id="infoCagnotte">
         <?php
         $req = $db->prepare("SELECT coins from users where id=:id;");
