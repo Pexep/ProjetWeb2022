@@ -48,7 +48,7 @@ Cela permet de tester en cas de grand changements et que l'on puisse approuver l
 
 # Wireflow
 
-Le wireflow est en cours de création.
+Le wireflow étant un peu lourd, il se trouve dans le même dossier que ce rapport.
 
 # Cas d'utilisations
 
