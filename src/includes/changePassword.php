@@ -16,10 +16,6 @@ if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_
 
     $result = $req->fetch();
     $pwd = $result["password"];
-
-    echo $pwd;
-    echo "<br>";
-    echo $login;
     
     if(strcmp($_POST['newpassword'], $_POST['checknewpassword']) === 0 && password_verify($_POST['actualpassword'], $pwd)){
         $changement_valide = true;
