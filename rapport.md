@@ -60,6 +60,8 @@ Faire des cas d'utilisations ici.
 
 ## Théo
 
+Personnellement, j'ai apprécié ce projet puisque je préfère le travail en équipe à un travail individuel : être à plusieurs permet de partager son savoir avec ses camarades, d'avoir différents points de vue et différentes approches d'un même élément, et c'est quelque chose que j'affectionne.
+
 ## Yvan
 
 Pour moi le projet fut intéréssant, l'aspect (re)découverte du travail en groupe m'a permis de mieux maîtriser git qu'avant. J'ai pu aussi avoir beaucoup de plaisir à paramètrer le déploiement automatique du site grâce à la CI/CD de gitlab. Cela fut un défi technique intéréssant à relever.
