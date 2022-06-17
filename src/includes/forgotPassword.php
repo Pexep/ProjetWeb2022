@@ -1,7 +1,7 @@
 <?php
 include("before_headers.php");
 include("mail.php");
-
+include("alertmanager.php");
 
 if(isset($_POST["email"]) && isset($_POST["newpassword"]) && isset($_POST["passwordconfirmation"]) && isset($_POST["code"])){
     $code = $_POST["code"];
@@ -19,15 +19,17 @@ if(isset($_POST["email"]) && isset($_POST["newpassword"]) && isset($_POST["passw
                 "password" => password_hash($_POST["newpassword"], PASSWORD_BCRYPT),
                 "email" => $_POST["email"]
             ));
+            setAlert('sucess', 'login', 'Votre mot de passe a été modifié avec succès !');
             header("Location: ../login.php");
         } else {
             /* Les mots de passe ne correspondent pas */
-            $_SESSION["passwordResetError"] = "Les mots de passe ne correspondent pas";
-            header("Location: ../forgotPassword.php");
+            setAlert('error', 'passwordreset', 'Les mots de passe ne correspondent pas');
+            header("Location: ../forgotPassword.php?code=".$code."&email=".base64_encode($_POST["email"]));
         }
     } else {
         /* Le code de réinitialisation de mot de passe n'est pas bon */
-        $_SESSION["passwordResetError"] = "Le code de réinitialisation de mot de passe n'est pas bon";
+        setAlert('error', 'passwordreset', 'Le code de réinitialisation de mot de passe n\'est pas bon');
+        header("Location: ../forgotPassword.php");
     }
 } else {
     $req = $db->prepare("SELECT * FROM users WHERE email = :email");

@@ -2,7 +2,7 @@
 include("includes/before_headers.php");
 $title = "Mot de passe oublié - Komposant";
 $description = "Page pour réinitialiser votre mot de passe sur le site komposant.com";
-
+include("includes/alertmanager.php");
 ?>
 
 
@@ -12,7 +12,7 @@ $description = "Page pour réinitialiser votre mot de passe sur le site komposan
     <?php include("includes/header.php"); ?>
     <body>
         <?php include("includes/navbar.php"); ?>
-
+        <?php showAlert("passwordreset"); ?>
         <?php if(isset($_GET["code"]) && isset($_GET["email"])) {
             ?>
             <form action="includes/forgotPassword.php" method="post" class="w3-container w3-card">
