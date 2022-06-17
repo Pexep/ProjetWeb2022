@@ -17,11 +17,11 @@ $userid = $result["id"];
 
 <!DOCTYPE html>
 <html>
-<?php include("includes/navbar.php"); ?>
-<h1>Vos informations</h1>
-<?php include("includes/header.php") ?>
-
-<body>
+    <h1>Vos informations</h1>
+    
+    <?php include("includes/header.php") ?>
+    <body>
+        <?php include("includes/navbar.php"); ?>
     <div id="infoLogin">
         <?php
         $req = $db->prepare("SELECT firstname,lastname from users where id=:id;");
