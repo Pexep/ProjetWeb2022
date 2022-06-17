@@ -19,6 +19,7 @@ if(isset($_POST["email"]) && isset($_POST["newpassword"]) && isset($_POST["passw
                 "password" => password_hash($_POST["newpassword"], PASSWORD_BCRYPT),
                 "email" => $_POST["email"]
             ));
+            header("Location: ../login.php");
         } else {
             /* Les mots de passe ne correspondent pas */
             $_SESSION["passwordResetError"] = "Les mots de passe ne correspondent pas";
