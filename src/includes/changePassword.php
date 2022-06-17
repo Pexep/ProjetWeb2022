@@ -28,14 +28,16 @@ if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_
     if($changement_valide){
         
         /* Redirection à la page où le client était */
-        if(isset($_SESSION['redirect_to'])){
+        /*if(isset($_SESSION['redirect_to'])){
             $redirect_to = $_SESSION['redirect_to'];
             unset($_SESSION['redirect_to']);
             header('Location: '.$redirect_to);
         }
         else{
             header('Location: ../index.php');
-        }
+        }*/
+
+        echo "valide";
 
         /* on change le mdp dans la bd */
         $req2 = $db->prepare("UPDATE users SET password = :password WHERE email = :email");

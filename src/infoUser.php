@@ -34,7 +34,7 @@ $userid = $result["id"];
         <br>
     </div>
     <div id="changementMotDePasse">
-        <p>Envie de changer votre mot de passe ?</p> <a href="changePassword.php">Cliquez ici !</a>
+        <p>Envie de changer votre mot de passe ? <a href="changePassword.php">Cliquez ici !</a></p>
     </div>
     <div id="infoCagnotte">
         <?php
