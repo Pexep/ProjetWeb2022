@@ -1,5 +1,6 @@
 <?php
 //session_start();
+include("includes/before_headers.php");
 include("database.php");
 
 if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_POST['checknewpassword'])) {
