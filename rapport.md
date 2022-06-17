@@ -60,6 +60,9 @@ Faire des cas d'utilisations ici.
 
 ## Mathis
 
+J’ai commencé par avoir du mal à travailler sur le projet étant donné que je n’aime pas spécialement le développement web et que le sujet était difficile à comprendre parfaitement et clairement. Mais le fait que le gros du travail devait être concentré sur la partie backend a été l’un des éléments atténuants qui ont fait que j’ai quand même fini par apprécier travailler sur ce projet. L’ambiance dans le groupe de projet ainsi que les différentes solutions mises en place par mes camarades pour faciliter le travail ont également eu un gros impact positif sur mon expérience du projet.
+J’ai finalement pris goût au projet et ai apprécié faire ce sur quoi j’ai travaillé. Le projet m’a permis de me familiariser avec le php et d’approfondir mes connaissances dans ce langage, en particulier grâce à mes camarades.
+
 ## Théo
 
 Personnellement, j'ai apprécié ce projet puisque je préfère le travail en équipe à un travail individuel : être à plusieurs permet de partager son savoir avec ses camarades, d'avoir différents points de vue et différentes approches d'un même élément, et c'est quelque chose que j'affectionne. Je trouve que ce projet était une bonne représentation de ce à quoi vont ressembler nos projets en entreprise, il constitue donc un bon entraînement et une belle préparation à ce fameux monde du travail.
