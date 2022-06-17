@@ -18,6 +18,9 @@ if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_
     $result = $req->fetch();
     $pwd = $result["password"];
 
+    echo $pwd;
+    echo "<br>";
+    echo $login;
     
     if(strcmp($_POST['newpassword'], $_POST['checknewpassword']) === 0 && password_verify($_POST['actualpassword'], $result['password'])){
         $changement_valide = true;
@@ -40,11 +43,11 @@ if(isset($_POST['actualpassword']) and isset($_POST['newpassword']) and isset($_
         echo "valide";
 
         /* on change le mdp dans la bd */
-        $req2 = $db->prepare("UPDATE users SET password = :password WHERE email = :email");
+        /*$req2 = $db->prepare("UPDATE users SET password = :password WHERE email = :email");
             $req2->execute(array(
                 "password" => password_hash($_POST["newpassword"], PASSWORD_BCRYPT),
                 "email" => $login
-            ));
+            ));*/
 
     } else {
         /* Todo: rediriger à la page de login avec un message mauvais mot de passe */
