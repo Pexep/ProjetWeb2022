@@ -43,8 +43,8 @@ if(isset($_POST["email"]) && isset($_POST["newpassword"]) && isset($_POST["passw
         $mail->Subject = "Réinitialisation de votre mot de passe";
 
         $lien = "https://iut.yvan.dev/komposant/forgotPassword.php?code=".$code."&email=".$usrmail."";
-        $mail->Body = 'Bonjour, <br/> <br/> Vous avez demandé la réinitialisation du mot de passe de votre compte Komposant.<br/>Veuillez trouver le lien pour accéder au formulaire de réinitialiation de mot de passe ci-dessous: <br/><a href="'.$lien.'">'.$lien.'</a></br><i>Si vous n\'êtes pas à l\'origine de cette requête, vous pouvez ignorer ce message.</i>';
-        // $mail->Body= 'Bonjour\nVous avez demandé la réinitialisation du mot de passe de votre compte Komposant.\nVeuillez trouver le lien pour accéder au formulaire de réinitialiation de mot de passe ci-dessous:\n';
+        $mail->Body = '<html>Bonjour, <br/> <br/> Vous avez demandé la réinitialisation du mot de passe de votre compte Komposant.<br/>Veuillez trouver le lien pour accéder au formulaire de réinitialiation de mot de passe ci-dessous: <br/><a href="'.$lien.'">'.$lien.'</a></br><i>Si vous n\'êtes pas à l\'origine de cette requête, vous pouvez ignorer ce message.</i></html>';
+        $mail->AltBody= "Bonjour \nVous avez demandé la réinitialisation du mot de passe de votre compte Komposant.\nVeuillez trouver le lien pour accéder au formulaire de réinitialiation de mot de passe ci-dessous:\n".$lien."";
         $mail->addAddress($_POST["email"]);
         $mail->isHTML(true);
         $mail->send();
@@ -54,6 +54,21 @@ if(isset($_POST["email"]) && isset($_POST["newpassword"]) && isset($_POST["passw
             "code" => $code,
             "email" => $_POST["email"]
         ));
+
+        include("header.php");
+        ?>
+        <html>
+            <body>
+                <div class="w3-container w3-card w3-center w3-green">
+                    <h1>Réinitialisation de votre mot de passe</h1>
+                    <p>Un lien de réinitialisation de mot de passe vous a été envoyé par mail.</p>
+                    <p>N'oubliez pas de verifier vos spams</p>
+
+                    <p>En cas de problèmes de reception du mail, cliquez sur ce lien: <a href="<?php echo $lien?>">lien de confirmation normalement reçu par mail</a></p>
+                </div>
+            </body>
+        </html>
+        <?php
 
     }
 }
