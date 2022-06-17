@@ -48,7 +48,9 @@ Cela permet de tester en cas de grand changements et que l'on puisse approuver l
 
 # Wireflow
 
-Le wireflow étant un peu lourd, il se trouve dans le même dossier que ce rapport.
+Le wireflow peut se retrouver en plus grand format sur le lien [wireflow.png](./wireflow.png)
+
+![wireflow](./wireflow.png)
 
 # Cas d'utilisations
 
