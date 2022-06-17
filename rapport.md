@@ -48,7 +48,7 @@ Cela permet de tester en cas de grand changements et que l'on puisse approuver l
 
 # Wireflow
 
-Le wireflow est en cours de création.
+Le wireflow étant un peu lourd, il se trouve dans le même dossier que ce rapport.
 
 # Cas d'utilisations
 
@@ -59,6 +59,8 @@ Faire des cas d'utilisations ici.
 ## Mathis
 
 ## Théo
+
+Personnellement, j'ai apprécié ce projet puisque je préfère le travail en équipe à un travail individuel : être à plusieurs permet de partager son savoir avec ses camarades, d'avoir différents points de vue et différentes approches d'un même élément, et c'est quelque chose que j'affectionne. Je trouve que ce projet était une bonne représentation de ce à quoi vont ressembler nos projets en entreprise, il constitue donc un bon entraînement et une belle préparation à ce fameux monde du travail.
 
 ## Yvan
 

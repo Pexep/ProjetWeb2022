@@ -11,10 +11,10 @@ if (isset($_GET["redirect_to"])) {
 
 $_SESSION["redirect_to"] = $redirect_to;
 
-if (!isset($_SESSION["connected"]) /*&& $_SESSION["connected"] == false*/) {
-    // L'utilsateur n'est pas connecté, il ne peut donc pas accéder à cette page
-    /*header("Location: infoUser.php");*/
-    echo "Vous n'êtes pas connecté.";
+if (!isset($_SESSION["connected"])) {
+    /* L'utilsateur n'est pas connecté, il ne peut normalement pas accéder à cette page */
+    header("Location: index.php");
+    
 }
 
 ?>
