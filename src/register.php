@@ -15,7 +15,7 @@ include("includes/before_headers.php");
     <form action="includes/register.php" method="post" class="w3-container w3-card">
         <h2>S'inscrire</h2>
         <label>Nom</label>
-        <input type="text" name="nom" placeholder="Nom" class="w3-input" required>
+        <input type="text" name="nom" placeholder="Nom" class="w3-input" required pattern="[a-zA-Z]+">
         <label>Prénom</label>
         <input type="text" name="prenom" placeholder="Prénom" class="w3-input" required>
         <label>Adresse mail</label>

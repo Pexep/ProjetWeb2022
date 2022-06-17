@@ -48,7 +48,11 @@ Cela permet de tester en cas de grand changements et que l'on puisse approuver l
 
 # Wireflow
 
+Le wireflow est en cours de création.
+
 # Cas d'utilisations
+
+Faire des cas d'utilisations ici.
 
 # Conclusions personnelles
 
@@ -57,5 +61,7 @@ Cela permet de tester en cas de grand changements et que l'on puisse approuver l
 ## Théo
 
 ## Yvan
+
+Pour moi le projet fut intéréssant, l'aspect (re)découverte du travail en groupe m'a permis de mieux maîtriser git qu'avant. J'ai pu aussi avoir beaucoup de plaisir à paramètrer le déploiement automatique du site grâce à la CI/CD de gitlab. Cela fut un défi technique intéréssant à relever.
 
 # Conclusion globale
