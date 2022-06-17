@@ -2,6 +2,7 @@
 include("includes/before_headers.php");
 $title = "Connexion - Komposant";
 $description = "Page de connexion du site komposant.com";
+include("includes/alertmanager.php");
 
 if (isset($_GET["redirect_to"])) {
     $redirect_to = $_GET["redirect_to"];
@@ -25,7 +26,7 @@ if (isset($_SESSION["connected"]) && $_SESSION["connected"] == true) {
 <body>
 
     <?php include("includes/navbar.php"); ?>
-
+    <?php showAlert("login"); ?>
     <form action="includes/login.php" method="post" class="w3-container w3-card">
         <h2>Se connecter</h2>
         <label>Adresse mail</label>

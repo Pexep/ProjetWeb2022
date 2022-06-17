@@ -9,6 +9,7 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/SMTP.php';
 
 $mail = new PHPMailer();
+// On peut décommenter la ligne suivante si on veut afficher les messages de debug (pratique en cas de problèmes lors de l'envoi d'un mail)
 // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
 $mail->isSMTP();
 $mail->CharSet = 'UTF-8';
