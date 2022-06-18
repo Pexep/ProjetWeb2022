@@ -14,8 +14,8 @@ function showAlert($alertName){
         'warning' => 'orange',
         'info' => 'blue'
     );
-    $alert = $_SESSION[$alertName];
     if(isset($_SESSION[$alertName])){
+        $alert = $_SESSION[$alertName];
         ?>
         <div class="w3-panel w3-<?php echo $colors[$alert['type']]?>">
             <span onclick="this.parentElement.style.display='none'" class="w3-button w3-right">X</span> <!-- on crée un bouton qui, au clic, va fermer l'alerte -->
