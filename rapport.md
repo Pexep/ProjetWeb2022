@@ -53,7 +53,14 @@ Le wireflow peut se retrouver en plus grand format sur le lien [wireflow.png](./
 
 # Cas d'utilisations
 
-Malheureusement, nous n'avons pas eu le temps de faire les cas d'utilisations.
+## Mot de passe oublié
+
+Nous avons pu rajouté une magnifique fonctionnalité pour pouvoir changer son mot de passe en cas d'oublie. 
+
+Lorsqu'un mot de passe mauvais est entré, le site porpose à l'utilisateur de changer son mot de passe et l'emmène sur un formulaire de mot de passe oublié.
+L'utilisateur peut choisir d'entrer son addresse mail et pourra ensuite recevoir un mail avec un lien de réinitiliasation de mot de passe.
+
+L'adresse [iut.yvan.dev/komposant](https://iut.yvan.dev) est valide et a été mise en place juste pour que le mail puisse s'envoyer. En cas de problèmes, le lien est quand même affiché en clair (en entreprise, nous n'aurions pas fait cela, c'est juste du secours).
 
 # Conclusions personnelles
 
