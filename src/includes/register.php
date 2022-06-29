@@ -1,6 +1,6 @@
 <?php
 include("before_headers.php");
-include("alertmanager.php")
+include("alertmanager.php");
 if(isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['password']) and isset($_POST['passwordverif']) and isset($_POST['email'])){
     unset($_SESSION["redirect_to"]);
     $insertion_possible = false;
